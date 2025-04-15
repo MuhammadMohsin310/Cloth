@@ -44,13 +44,13 @@ const Navbar = () => {
                 <NavLink to="/" className="">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="">Menu</NavLink>
+                <NavLink to="/shop" className="">Shop</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="">Cart</NavLink>
+                <NavLink to="/about" className="">About Us</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="">Contact</NavLink>
+                <NavLink to="/contact" className="">Contact Us</NavLink>
               </li>
             </ul>
           </div>
