@@ -30,21 +30,28 @@ function Home() {
             <div className=''>
               <Link to={'menu'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
               {[
-                { name: 'Men', img: './dessert.png' },
-                { name: 'Women',  img: './dessert.png'  },
-                { name: 'Childrens', img: './dessert.png'  }
+                { name: 'Men', img: './sample shirt.jpg' },
+                { name: 'Women',  img: './sample shirt.jpg'  },
+                { name: 'Childrens', img: './sample shirt.jpg'  }
               ].map((dish, index) => (
-                <Card key={index} className='w-full sm:w-80 justify-center mx-auto '>
-                  <CardHeader className='bg-white'>
-                    <img src={dish.img} alt={dish.name} className='bg-blue-200 p-4 w-20 flex m-auto  object-cover rounded-3xl mt-2' />
+                <Card key={index} className='w-full sm:w-80 justify-center mx-auto'>
+                <div className="relative w-full h-52 overflow-hidden rounded-lg">
+                  <img src="./sample shirt.jpg" alt="" className="w-full h-full object-cover" />
+                  
+                  <div className="absolute bottom-2 left-2 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-md">
                     <CardTitle>
-                      <h2 className='flex justify-center text-center font-bold text-black text-lg md:text-xl'>{dish.name}</h2>
+                      <h2 className='text-sm md:text-base font-bold text-slate-800'>{dish.name}</h2>
                     </CardTitle>
+                  </div>
+                </div>
+              
+                  {/* <CardHeader className='bg-white'>
+                    <img src={dish.img} alt={dish.name} className='bg-blue-200  w-20 flex m-auto  object-cover rounded-3xl mt-2' />
                     {/* <CardDescription className='text-sm md:text-base mt-3 flex justify-center'>
                       {dish.desc}
                     </CardDescription> */}
                    
-                  </CardHeader>
+                  {/* </CardHeader> */}
                 </Card>
               ))}
               </Link>
@@ -56,42 +63,128 @@ function Home() {
 
 
      {/*Dishes Section */}
-     <div className='bg-white p-10 md:p-20 sm:p-10'>
+     <div className='bg-white p-10 md:p-20 sm:p-10 '>
         <div className='flex flex-col md:flex-row items-center mx-5 md:mx-10'>
           <div className='w-full md:w-full justify-center text-center md:text-left'>
-            <h3 className='text-red-500 font-bold mt-6 text-lg md:text-xl'>Special Dishes</h3>
-            <h1 className='text-2xl md:text-4xl font-bold mt-5'>Standout Dishes From Our Menu</h1>
+            <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Featured Products</h3>
+            <h1 className='text-center text-2xl md:text-4xl font-bold mt-5'>Best Seller Product</h1>
+            <p  className='text-center'>Problems trying to resolve the conflict between </p>
             <Link to={'menu'}>
-            <div className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
-              {[ 
-                { name: 'Fattoush Salad', price: 24, rating: 4.2, img: './download.jpg' },
-                { name: 'Vegetable Salad', price: 27, rating: 4.9, img: './download.jpg' },
-                { name: 'Egg Vegi Salad', price: 31, rating: 4.5, img: './download.jpg' }
-              ].map((dish, index) => (
-                <Card key={index} className='w-full sm:w-80 justify-center mx-auto '>
-                  <CardHeader className='bg-white'>
-                    <CardTitle>
-                      <h2 className='flex justify-center text-center text-green-800 text-lg md:text-xl'>{dish.name}</h2>
-                    </CardTitle>
-                    <img src={dish.img} alt={dish.name} className='w-full h-40 object-cover rounded-lg mt-2 ' />
-                    <CardDescription className='text-sm md:text-base mt-3'>
-                      A refreshing Middle Eastern salad with crispy pita chips, fresh vegetables, and a zesty sumac dressing.
-                    </CardDescription>
-                    <div className='flex items-center justify-between w-full pt-5'>
-                      <div className='font-bold text-lg'><span className='text-red-600'>$</span> {dish.price.toFixed(2)}</div>
-                      <div className='flex items-center'> 
-                        <span className='mr-1'>{dish.rating}</span>
-                        <img src='./star-remove.png' alt='star' className='w-5 h-5' />
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
+            <div className='flex flex-wrap justify-center md:justify-start gap-4 mt-10'>
+  {[
+    {
+      desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
+      price: 24,
+      rating: 4.2,
+      img: './sample shirt.jpg',
+    },
+    {
+      desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
+      price: 27,
+      rating: 4.9,
+      img: './sample shirt.jpg',
+    },
+    {
+      desc: 'Elegant flow meets everyday ease. This maxi dress drapes beautifully and moves with you — perfect for brunch dates, beach walks, or just turning heads wherever you go.',
+      price: 17,
+      rating: 4.9,
+      img: './sample shirt.jpg',
+    },
+    {
+      desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
+      price: 31,
+      rating: 4.5,
+      img: './sample shirt.jpg',
+    },
+  ].map((dish, index) => (
+    <Card
+      key={index}
+      className='w-full sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
+    >
+      <CardHeader className='p-0'>
+        <div className="relative w-full h-50 overflow-hidden rounded-t-lg">
+          <img
+            src={dish.img}
+            alt={dish.name}
+            className='w-full h-full object-cover'
+          />
+        </div>
+      </CardHeader>
+
+      <CardContent className='flex-1 px-6 pt-4'>
+        <CardDescription className='text-sm md:text-base'>
+          {dish.desc}
+        </CardDescription>
+      </CardContent>
+
+      <CardFooter className='flex items-center justify-between w-full px-6 pb-4 pt-2 mt-auto'>
+        <div className='font-bold text-lg'>
+          <span className='text-red-600'>$</span> {dish.price.toFixed(2)}
+        </div>
+        <div className='flex items-center'>
+          <span className='mr-1'>{dish.rating}</span>
+          <img src='./star.png' alt='star' className='w-5 h-5' />
+        </div>
+      </CardFooter>
+    </Card>
+  ))}
+</div>
+
             </Link>
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+{/* Banner Section */}
+ <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
+  {/* Background Image */}
+  <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
+  <h1 className="relative text-white text-5xl font-bold bg-transparent"> Banner</h1>
+</div>
+ 
+
+
+
+
+
+ {/* Sub-Section */}
+<section className="py-16 grid grid-cols-1 md:grid-cols-2 items-center gap-6 p-6 bg-white">
+  {/* Left Side - Image */}
+  <div className="m-auto">
+    <img
+      src="./sample shirt.jpg"
+      alt="Featured Product"
+      className="w-70 h-auto object-cover rounded-lg"
+    />
+  </div>
+
+  {/* Right Side - Text Content */}
+  <div className="flex flex-col justify-center space-y-4 text-center md:text-left">
+    <p className="text-sm text-red-600 uppercase">Summer 2020</p>
+    <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+      Part of the Neural Universe
+    </h2>
+    <p className="text-gray-600 text-base md:text-lg">
+      We know how large objects will act, but things on a small scale.
+    </p>
+    <div className="flex justify-center md:justify-start space-x-4 pt-6">
+      <button className="bg-black text-white px-5 py-2 rounded-md text-sm hover:cursor-pointer">
+        Buy Now
+      </button>
+      <button className="border border-slate-300 text-black hover:bg-green-100  px-5 py-2 rounded-md text-sm">
+        Read More
+      </button>
+    </div>
+  </div>
+</section>
+
 
     {/* Testimonial Section */}
         {/* <div className='bg-white p-20'>
@@ -107,74 +200,7 @@ function Home() {
 
         </div> */}
 
-        
 
-      {/* Culinary Journey -Sections */}
-      <div className="bg-white p-10 md:p-20">
-  <div className="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-between mx-5 md:mx-10">
-    
-    {/* Left Section */}
-    <div className="w-full md:w-1/2 p-4 text-center md:text-left">
-      <h3 className="text-red-500 font-bold mt-4">Our Story & Services</h3>
-      <h1 className="text-2xl md:text-3xl font-bold mt-3">Our Culinary Journey And Services</h1>
-      <p className="mt-3 text-base md:text-lg max-w-md mx-auto md:mx-0">
-        Rooted in passion, we curate unforgettable dining experiences and offer exceptional services, blending culinary artistry with warm hospitality.
-      </p>
-      <button className="bg-green-500 text-white px-6 py-3 rounded-3xl mt-5">
-       <NavLink to="/menu"> Explore</NavLink>
-      </button>
-    </div>
-
-    {/* Right Section (Image or Content) */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 md:mt-0">
-  <Card>
-    <CardHeader className="bg-white">
-      <CardTitle>
-        <h2 className="text-green-600">Catering</h2>
-      </CardTitle>
-      <CardDescription>
-        <p>Delight your guests with our flavors and presentation</p>
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  <Card>
-    <CardHeader className="bg-white">
-      <CardTitle>
-        <h2 className="text-green-600">Fast Delivery</h2>
-      </CardTitle>
-      <CardDescription>
-        <p>Delight your guests with our flavors and presentation</p>
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  <Card>
-    <CardHeader className="bg-white">
-      <CardTitle>
-        <h2 className="text-green-600">Online Ordering</h2>
-      </CardTitle>
-      <CardDescription>
-        <p>Explore menu & order with ease using our Online Ordering</p>
-      </CardDescription>
-    </CardHeader>
-  </Card>
-
-  <Card>
-    <CardHeader className="bg-white">
-      <CardTitle>
-        <h2 className="text-green-600">Gift Cards</h2>
-      </CardTitle>
-      <CardDescription>
-        <p>Give the gift of exceptional dining with Foodi Gift Cards</p>
-      </CardDescription>
-    </CardHeader>
-  </Card>
-</div>
-
-
-  </div>
-</div>
   </>
 
   )

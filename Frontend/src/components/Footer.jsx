@@ -1,5 +1,6 @@
 import React from "react";
 import {Link , NavLink} from 'react-router-dom'
+
 const Footer = () => {
   return (
     <footer className="bg-gray-800 p-10 bottom-0">
@@ -8,7 +9,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">About Us</h3>
           <p className="text-sm text-gray-400">
-          Savor the artistry where every dish is a culinary masterpiece
+          Made with style, crafted for comfort.
           </p>
         </div>
 
@@ -22,13 +23,13 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <a href="/menu" className="hover:text-white">
-                Menu
+              <a href="/shop" className="hover:text-white">
+                Shop
               </a>
             </li>
             <li>
-              <a href="/cart" className="hover:text-white">
-                Cart
+              <a href="/about" className="hover:text-white">
+                About Us
               </a>
             </li>
             <li>
@@ -41,26 +42,26 @@ const Footer = () => {
 
     
         <div>
-          <h3 className="text-lg font-semibold mb-4">Services</h3>
+          <h3 className="text-lg font-semibold mb-4">Customer Services</h3>
           <ul className="text-sm text-gray-400 space-y-2">
             <li>
               <a href="#" className="hover:text-white">
-                Web Development
+              Terms & Conditions
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-white">
-                App Design
+              Privacy Policy
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-white">
-                Graphic Design
+              Return & Exchange Policy
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-white">
-                SEO Services
+              Store Locator
               </a>
             </li>
           </ul>
@@ -70,11 +71,11 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
           <ul className="text-sm text-gray-400 space-y-2">
-            <li>Email: pos@gmail.com</li>
+            <li>Email: aa@gmail.com</li>
             <li>Phone: +92 XXX XXX XXXX</li>
             <li className="flex space-x-4 mt-4">
               <a href="#" className="hover:text-white">
-                <i className="fab fa-facebook-f"></i> Facebook
+                <i className="fab fa-facebook-f "> </i> Facebook
               </a>
               <a href="#" className="hover:text-white">
                 <i className="fab fa-twitter"></i> Twitter
@@ -88,7 +89,7 @@ const Footer = () => {
       </div>
       <div className="mt-10">
       <p className="text-center text-gray-400 mt-10 ">
-        &copy; {new Date().getFullYear()} POS . All rights reserved.
+        &copy; {new Date().getFullYear()} Clothing . All rights reserved.
       </p>
       </div>
     </footer>
