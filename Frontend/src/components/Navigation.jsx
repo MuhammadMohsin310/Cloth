@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className="text-green-600 text-3xl font-bold">POS</h1>
+            <h1 className="text-black text-3xl font-bold">Brand</h1>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -41,16 +41,16 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:w-auto lg:order-1">
             <ul className="flex space-x-8 font-medium">
               <li>
-                <NavLink to="/" className="hover:text-green-500">Home</NavLink>
+                <NavLink to="/" className="">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="hover:text-green-500">Menu</NavLink>
+                <NavLink to="/" className="">Menu</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="hover:text-green-500">Cart</NavLink>
+                <NavLink to="/" className="">Cart</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="hover:text-green-500">Contact</NavLink>
+                <NavLink to="/" className="">Contact</NavLink>
               </li>
             </ul>
           </div>
@@ -72,10 +72,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="bg-green-500 text-white rounded-md hover:bg-[#559e5b] px-4 py-2">
+                <Link to="/login" className="bg-gray-800 text-white rounded-md  px-4 py-2">
                   Login
                 </Link>
-                <Link to="/signup" className="bg-green-500 text-white rounded-md hover:bg-[#559e5b] px-4 py-2">
+                <Link to="/signup" className="bg-gray-800 text-white rounded-md px-4 py-2">
                   Sign Up
                 </Link>
               </>
