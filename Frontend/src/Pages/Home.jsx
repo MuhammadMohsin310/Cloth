@@ -17,7 +17,7 @@ function Home() {
 <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h1 className="relative text-white text-5xl font-bold bg-transparent"> Welcome </h1>
+  <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1>
 </div>
 
 
@@ -26,13 +26,13 @@ function Home() {
         <div className='flex flex-col md:flex-row items-center mx-5 md:mx-10'>
           <div className='w-full md:w-full justify-center p-6 text-center md:text-left'>
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Customer Favorites</h3>
-            <h1 className='text-center pb-10 text-2xl md:text-4xl font-bold mt-5'>Popular Catagories</h1>
+            <h1 className='text-center pb-10 text-2xl md:text-4xl font-bold mt-5'>Our Catagories</h1>
             <div className=''>
               <Link to={'menu'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
               {[
-                { name: 'Fast Food', img: './dessert.png' , desc: '(86 dishes)' },
-                { name: 'Sweets',  img: './dessert.png' , desc: '(12 break fast)' },
-                { name: 'Dessert', img: './dessert.png' , desc: '(48 dessert)' }
+                { name: 'Men', img: './dessert.png' },
+                { name: 'Women',  img: './dessert.png'  },
+                { name: 'Childrens', img: './dessert.png'  }
               ].map((dish, index) => (
                 <Card key={index} className='w-full sm:w-80 justify-center mx-auto '>
                   <CardHeader className='bg-white'>
@@ -40,9 +40,9 @@ function Home() {
                     <CardTitle>
                       <h2 className='flex justify-center text-center font-bold text-black text-lg md:text-xl'>{dish.name}</h2>
                     </CardTitle>
-                    <CardDescription className='text-sm md:text-base mt-3 flex justify-center'>
+                    {/* <CardDescription className='text-sm md:text-base mt-3 flex justify-center'>
                       {dish.desc}
-                    </CardDescription>
+                    </CardDescription> */}
                    
                   </CardHeader>
                 </Card>
@@ -126,37 +126,52 @@ function Home() {
     </div>
 
     {/* Right Section (Image or Content) */}
-    <div className="grid grid-cols-1 gap-3 mt-6 md:mt-0 sm:grid-cols-2">
-    <Card>
-<CardHeader className="bg-white">
-  <CardTitle><h2 className='text-green-600'>Catering</h2></CardTitle>
-  <CardDescription> <p>Delight your guests with our flavors and  presentation</p></CardDescription>
-</CardHeader>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 md:mt-0">
+  <Card>
+    <CardHeader className="bg-white">
+      <CardTitle>
+        <h2 className="text-green-600">Catering</h2>
+      </CardTitle>
+      <CardDescription>
+        <p>Delight your guests with our flavors and presentation</p>
+      </CardDescription>
+    </CardHeader>
+  </Card>
 
-</Card>
-<Card>
-<CardHeader className="bg-white">
-  <CardTitle><h2 className='text-green-600'>Fast delivery</h2></CardTitle>
-  <CardDescription> <p>Delight your guests with our flavors and  presentation</p></CardDescription>
-</CardHeader>
+  <Card>
+    <CardHeader className="bg-white">
+      <CardTitle>
+        <h2 className="text-green-600">Fast Delivery</h2>
+      </CardTitle>
+      <CardDescription>
+        <p>Delight your guests with our flavors and presentation</p>
+      </CardDescription>
+    </CardHeader>
+  </Card>
 
-</Card>
-<Card>
-<CardHeader className="bg-white">
-  <CardTitle><h2 className='text-green-600'>Online Ordering</h2></CardTitle>
-  <CardDescription> <p>Explore menu & order with ease using our Online Ordering </p></CardDescription>
-</CardHeader>
+  <Card>
+    <CardHeader className="bg-white">
+      <CardTitle>
+        <h2 className="text-green-600">Online Ordering</h2>
+      </CardTitle>
+      <CardDescription>
+        <p>Explore menu & order with ease using our Online Ordering</p>
+      </CardDescription>
+    </CardHeader>
+  </Card>
 
-</Card>
-<Card>
-<CardHeader className="bg-white">
-  <CardTitle><h2 className='text-green-600'>Gift Cards</h2></CardTitle>
-  <CardDescription> <p>Give the gift of exceptional dining with Foodi Gift Cards</p></CardDescription>
-</CardHeader>
+  <Card>
+    <CardHeader className="bg-white">
+      <CardTitle>
+        <h2 className="text-green-600">Gift Cards</h2>
+      </CardTitle>
+      <CardDescription>
+        <p>Give the gift of exceptional dining with Foodi Gift Cards</p>
+      </CardDescription>
+    </CardHeader>
+  </Card>
+</div>
 
-</Card>
-    
-    </div>
 
   </div>
 </div>
