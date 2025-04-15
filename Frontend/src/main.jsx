@@ -6,6 +6,8 @@ import './index.css'
 import { createRoutesFromElements, Route, Router } from 'react-router-dom'
 import Layout from './components/Layout'
 import { createBrowserRouter , RouterProvider } from'react-router-dom'
+import About from './pages/About'
+// import Home from './pages/Home'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 
@@ -16,6 +18,8 @@ const router = createBrowserRouter(
     <Route>
 
       <Route path="/" element={<Layout />}> 
+      
+      <Route path="about" element={<About/>} />
       <Route path="/" element={<Home/>} />
       <Route path="/contact" element={<Contact />} />
       {/* <Route path="/menu" element={<Menu />} />
