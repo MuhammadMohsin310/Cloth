@@ -26,7 +26,7 @@ function Home() {
         <div className='flex flex-col md:flex-row items-center mx-5 md:mx-10'>
           <div className='w-full md:w-full justify-center p-6 text-center md:text-left'>
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Customer Favorites</h3>
-            <h1 className='text-center pb-10 text-2xl md:text-4xl font-bold mt-5'>Our Catagories</h1>
+            <h1 className='text-center pb-10 text-2xl md:text-4xl font-bold mt-5'>Our Collections</h1>
             <div className=''>
               <Link to={'menu'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
               {[
