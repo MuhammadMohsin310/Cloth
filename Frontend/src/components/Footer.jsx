@@ -71,7 +71,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
           <ul className="text-sm text-gray-400 space-y-2">
-            <li>Email: aa@gmail.com</li>
+            <li>Email: aarijhere10@gmail.com</li>
             <li>Phone: +92 XXX XXX XXXX</li>
             <li className="flex space-x-4 mt-4">
               <a href="#" className="hover:text-white">

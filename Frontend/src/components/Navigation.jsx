@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className="text-black text-3xl font-bold">Brand</h1>
+            <h1 className="text-black text-3xl font-bold">Store Name</h1>
           </Link>
 
           {/* Mobile Menu Button */}
@@ -44,7 +44,7 @@ const Navbar = () => {
                 <NavLink to="/" className="">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className="">Shop</NavLink>
+                <NavLink to="/wp-admin" className="">Shop</NavLink>
               </li>
               <li>
                 <NavLink to="/about" className="">About Us</NavLink>
