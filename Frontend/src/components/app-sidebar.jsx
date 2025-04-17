@@ -1,27 +1,6 @@
-"use client";
-
 import React from "react";
-import {
-  ArrowUpCircleIcon,
-  BarChartIcon,
-  CameraIcon,
-  ClipboardListIcon,
-  DatabaseIcon,
-  FileCodeIcon,
-  FileIcon,
-  FileTextIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  LayoutDashboardIcon,
-  ListIcon,
-  SearchIcon,
-  SettingsIcon,
-  UsersIcon,
-} from "lucide-react";
-
-import { NavDocuments } from "@/components/nav-document";
+import { useEffect, useState } from "react";
 import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -32,6 +11,19 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { LayoutDashboardIcon, ListIcon, FolderIcon, UsersIcon } from "lucide-react";
+import { cn } from "@/lib/utils"; // Optional, if you're using className helper
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { href } from "react-router-dom";
+
 
 const data = {
   user: {
@@ -39,142 +31,108 @@ const data = {
     email: "aarij@gmail.com",
     avatar: "./sample shirt.jpg",
   },
+
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/wp-admin/dashboard",
       icon: LayoutDashboardIcon,
+      
+      
     },
     {
       title: "Orders",
-      url: "#",
+      url: "/wp-admin/orders",
       icon: ListIcon,
     },
-  
     {
       title: "Products",
-      url: "#",
+      url: "/wp-admin/products",
       icon: FolderIcon,
     },
     {
       title: "Users",
-      url: "#",
+      url: "/wp-admin/users",
       icon: UsersIcon,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: CameraIcon,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: FileTextIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: FileCodeIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: SettingsIcon,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: HelpCircleIcon,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: SearchIcon,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: DatabaseIcon,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: ClipboardListIcon,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: FileIcon,
     },
   ],
 };
 
 export function AppSidebar(props) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768); // md breakpoint
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
-            >
-              <a href="#">
-                {/* <ArrowUpCircleIcon className="h-5 w-5" /> */}
-                <img src="./sample shirt.jpg" alt=""  className="h-5 w-5 rounded-xl"/>
-                <span className="text-base font-semibold text-red-600">Store Name</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+    <>
+      {/* Desktop Sidebar */}
+      {!isMobile && (
+        <Sidebar collapsible="offcanvas" {...props}>
+          <SidebarHeader>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  className="data-[slot=sidebar-menu-button]:!p-1.5"
+                >
+                  <a href="#">
+                    <img
+                      src="./sample shirt.jpg"
+                      alt=""
+                      className="h-5 w-5 rounded-xl"
+                    />
+                    <span className="text-base font-semibold text-red-600">
+                      Store Name
+                    </span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarHeader>
 
-      <SidebarContent>
-        <NavMain items={data.navMain} />
-        {/* <NavDocuments items={data.documents} /> */}
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
-      </SidebarContent>
+          <SidebarContent>
+            <NavMain items={data.navMain} />
+          </SidebarContent>
 
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
-    </Sidebar>
+          <SidebarFooter>
+            <NavUser user={data.user} />
+          </SidebarFooter>
+        </Sidebar>
+      )}
+
+      {/* Mobile Navbar */}
+      {isMobile && (
+  <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-4 py-3 flex items-center justify-between md:hidden">
+    <div className="flex items-center gap-2">
+      <button>
+        <img
+          src="./sample shirt.jpg"
+          alt="avatar"
+          className="h-8 w-8 rounded-full"
+        />
+      </button>
+      <span className="font-semibold text-red-600">Store Name</span>
+    </div>
+
+    <div className="flex items-center gap-4 ml-auto">
+   
+
+<DropdownMenu>
+  <DropdownMenuTrigger><NavUser user={data.user} /></DropdownMenuTrigger>
+
+</DropdownMenu>
+
+
+
+    </div>
+  </nav>
+)}
+
+    </>
   );
 }

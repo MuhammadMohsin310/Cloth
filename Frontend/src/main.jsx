@@ -10,7 +10,11 @@ import About from './pages/About'
 // import Home from './pages/Home'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
-import AdminPanel from './Pages/AdminPanel'
+import LayoutSidebar from './components/LayoutSidebar'
+import Dashboard from './Pages/Dashboard'
+import Users from './Pages/Users'
+import Products from './Pages/Products'
+import Orders from './Pages/Orders'
 
 // Define router
 const router = createBrowserRouter(
@@ -20,20 +24,22 @@ const router = createBrowserRouter(
 
       <Route path="/" element={<Layout />}>
 
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact/>} />
         <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
         {/* <Route path="/menu" element={<Menu />} />
-      <Route path="/menu" element={<Menu />} />
-      <Route path="/cart" element={<Cart/>} /> */}
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/cart" element={<Cart/>} /> */}
       </Route>
 
-      <Route>
-        <Route path="/wp-admin" element={<AdminPanel />} />
-        {/* <Route path="/login" element={<Login />}/>
-         <Route path="/signup" element={<Signup />} /> */}
-        {/* <Route path="/logout" element={<Logout />} /> */}
+
+      <Route path="/wp-admin" element={<LayoutSidebar />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="users" element={<Users />} />
+        <Route path="products" element={<Products />} />
+        <Route path="orders" element={<Orders />} />
       </Route>
+
 
     </Route>
 

@@ -36,12 +36,12 @@ export function NavMain({ items }) {
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
+            <a href={item.url}><SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon && React.createElement(item.icon)}
                 <span>{item.title}</span>
               </SidebarMenuButton>
-            </SidebarMenuItem>
+            </SidebarMenuItem></a>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>
