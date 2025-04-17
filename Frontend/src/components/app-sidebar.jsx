@@ -35,9 +35,9 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "aarij",
+    email: "aarij@gmail.com",
+    avatar: "./sample shirt.jpg",
   },
   navMain: [
     {
@@ -46,22 +46,18 @@ const data = {
       icon: LayoutDashboardIcon,
     },
     {
-      title: "Lifecycle",
+      title: "Orders",
       url: "#",
       icon: ListIcon,
     },
+  
     {
-      title: "Analytics",
-      url: "#",
-      icon: BarChartIcon,
-    },
-    {
-      title: "Projects",
+      title: "Products",
       url: "#",
       icon: FolderIcon,
     },
     {
-      title: "Team",
+      title: "Users",
       url: "#",
       icon: UsersIcon,
     },
@@ -161,8 +157,9 @@ export function AppSidebar(props) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <a href="#">
-                <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                {/* <ArrowUpCircleIcon className="h-5 w-5" /> */}
+                <img src="./sample shirt.jpg" alt=""  className="h-5 w-5 rounded-xl"/>
+                <span className="text-base font-semibold text-red-600">Store Name</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -171,8 +168,8 @@ export function AppSidebar(props) {
 
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        {/* <NavDocuments items={data.documents} /> */}
+        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
 
       <SidebarFooter>

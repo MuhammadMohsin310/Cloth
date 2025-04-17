@@ -28,6 +28,5 @@ export function NavSecondary({ items, ...props }) {
           ))}
         </SidebarMenu>
       </SidebarGroupContent>
-    </SidebarGroup>
-  )
+    </SidebarGroup>  )
 }
