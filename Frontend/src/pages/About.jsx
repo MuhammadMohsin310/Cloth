@@ -132,7 +132,7 @@ const About = () => {
                     <h1 className="text-5xl font-bold">{ratings.heading}</h1>
                     <p className="text-xl text-gray-600">{ratings.desc}</p>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -149,12 +149,12 @@ const About = () => {
               </p>
             </div>
 
-            <div className="flex justify-around lg:flex-row flex-col lg:gap-0 gap-10 ">
+            <div className="flex justify-between lg:flex-row flex-col lg:gap-0 gap-10 ">
               {cards.map((card) => {
                 return (
-                  <Card
+                 <Card
                     key={card.id}
-                    className="h-92 w-80 py-0 rounded-lg flex flex-col gap-5 "
+                    className="h-92 w-80 py-0 rounded-lg flex flex-col gap-5 mx-5 "
                   >
                     <div>
                       <img
