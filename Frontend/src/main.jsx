@@ -14,8 +14,10 @@ import LayoutSidebar from './components/LayoutSidebar'
 import Dashboard from './Pages/Dashboard'
 import Users from './Pages/Users'
 import Products from './Pages/Products'
+// import { ProfileForm } from './components/ui/form'
 import Orders from './Pages/Orders'
 
+// import AdminPanel from './Pages/AdminPanel'
 import Shop from './pages/Shop'
 
 // Define router
@@ -37,7 +39,7 @@ const router = createBrowserRouter(
 
 
       <Route path="/wp-admin" element={<LayoutSidebar />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="" element={<Dashboard />} />
         <Route path="users" element={<Users />} />
         <Route path="products" element={<Products />} />
         <Route path="orders" element={<Orders />} />
