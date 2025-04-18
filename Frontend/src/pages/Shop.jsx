@@ -1,8 +1,18 @@
 import React from "react";
 import Breadcrumbdemo from "../components/Breadcrumb";
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import axiosInstance from "../services/axiosInstance";
+import { toast } from "react-toastify";
 const Shop = () => {
   const [Category, setCategory] = useState([
     { name: "Cloths", items: 5 },
@@ -11,58 +21,28 @@ const Shop = () => {
     { name: "Electronics", items: 20 },
     { name: "Home Appliances", items: 25 },
   ]);
-  const [Products, setProducts] = useState([
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-    {
-      name: "Web Developers",
-      description: "Team Work",
-      price: "100$",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get(
+          `/products?page=${currentPage}&limit=${itemsPerPage}`
+        );
+        console.log(response.data); // ✅ Should show the full response now
+        setProducts(response.data.products);
+        //
+        toast.success('Products loaded successfully!');
+        
+      } catch (error) {
+        console.error("Failed to fetch products ❌", error);
+      }
+    };
+    fetchProducts();
+  }, [currentPage]);
+
   return (
     <>
       <section className="w-full   ">
@@ -101,20 +81,43 @@ const Shop = () => {
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
           <div className="grid grid-cols-4 gap-4 mt-10 ">
-            {Products.map((item, index) => (
-             <Card key={index} className="bg-white shadow-md rounded-lg  mt-4 flex  items-center h-96 flex-col gap-10">
-             <div className="h-56 w-full bg-gray-300 "></div>
-             <div className="text-center flex flex-col gap-7">
-               <div>
-                 <div className="text-lg font-semibold">{item.name}</div>
-                 <div className="text-xs text-gray-500">{item.description}</div>
-               </div>
-               <div>
-                 <div className="text-md ">{item.price}</div>
-               </div>
-             </div>
-           </Card>
+            {products?.map((item, index) => (
+              <Card
+                key={index}
+                className="bg-white shadow-md rounded-lg  mt-4 flex  items-center h-96 flex-col gap-10"
+              >
+                <div className="h-56 w-full bg-gray-300 "></div>
+                <div className="text-center flex flex-col gap-7">
+                  <div>
+                    <div className="text-lg font-semibold">{item.name}</div>
+                    <div className="text-xs text-gray-500">
+                      {item.description}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-md ">{item.price}</div>
+                  </div>
+                </div>
+              </Card>
             ))}
+          </div>
+          <div>
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious  />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink onClick={()=>{setCurrentPage(p=>Math.max(p-1,1))}}>{i+1}</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </div>
         {/* Products */}
