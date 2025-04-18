@@ -15,7 +15,7 @@ import Dashboard from './Pages/Dashboard'
 import Users from './Pages/Users'
 import Products from './Pages/Products'
 import Orders from './Pages/Orders'
-import AdminPanel from './Pages/AdminPanel'
+
 import Shop from './pages/Shop'
 
 // Define router
