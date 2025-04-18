@@ -16,8 +16,9 @@ import Users from './Pages/Users'
 import Products from './Pages/Products'
 // import { ProfileForm } from './components/ui/form'
 import Orders from './Pages/Orders'
-// import AdminPanel from './Pages/AdminPanel'
-import Shop from './pages/Shop'
+
+
+import Shop from './Pages/Shop'
 
 // Define router
 const router = createBrowserRouter(
