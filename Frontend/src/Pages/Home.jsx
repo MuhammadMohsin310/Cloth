@@ -17,7 +17,7 @@ function Home() {
 <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1>
+  {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
 </div>
 
 
@@ -30,13 +30,13 @@ function Home() {
             <div className=''>
               <Link to={'menu'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
               {[
-                { name: 'Men', img: './sample shirt.jpg' },
-                { name: 'Women',  img: './sample shirt.jpg'  },
-                { name: 'Childrens', img: './sample shirt.jpg'  }
+                { name: 'Men', img: './men-1.jpg' },
+                { name: 'Women',  img: './women.jpg'  },
+                { name: 'Childrens', img: './children-sample.jpg'  }
               ].map((dish, index) => (
                 <Card key={index} className='w-full sm:w-80 justify-center mx-auto'>
                 <div className="relative w-full h-52 overflow-hidden rounded-lg">
-                  <img src="./sample shirt.jpg" alt="" className="w-full h-full object-cover" />
+                  <img src={dish.img} alt="" className="w-full h-full object-cover" />
                   
                   <div className="absolute bottom-2 left-2 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-md">
                     <CardTitle>
@@ -76,30 +76,30 @@ function Home() {
       desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
       price: 24,
       rating: 4.2,
-      img: './sample shirt.jpg',
+      img: './men-sample.jpg',
     },
     {
       desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
       price: 27,
       rating: 4.9,
-      img: './sample shirt.jpg',
+      img: './women.jpg',
     },
     {
       desc: 'Elegant flow meets everyday ease. This maxi dress drapes beautifully and moves with you — perfect for brunch dates, beach walks, or just turning heads wherever you go.',
       price: 17,
       rating: 4.9,
-      img: './sample shirt.jpg',
+      img: './children-sample.jpg',
     },
     {
       desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
       price: 31,
       rating: 4.5,
-      img: './sample shirt.jpg',
+      img: './women-1.jpg',
     },
   ].map((dish, index) => (
     <Card
       key={index}
-      className='w-full sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
+      className='w-full  sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
     >
       <CardHeader className='p-0'>
         <div className="relative w-full h-50 overflow-hidden rounded-t-lg">
@@ -145,8 +145,8 @@ function Home() {
 {/* Banner Section */}
  <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
-  <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h1 className="relative text-white text-5xl font-bold bg-transparent"> Banner</h1>
+  <img src="./women.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
+  {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Banner</h1> */}
 </div>
  
 
@@ -159,7 +159,7 @@ function Home() {
   {/* Left Side - Image */}
   <div className="m-auto">
     <img
-      src="./sample shirt.jpg"
+      src="./women-1.jpg"
       alt="Featured Product"
       className="w-70 h-auto object-cover rounded-lg"
     />

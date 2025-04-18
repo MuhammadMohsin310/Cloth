@@ -7,7 +7,7 @@ import { createRoutesFromElements, Route, Router } from 'react-router-dom'
 import Layout from './components/Layout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import About from './pages/About'
-// import Home from './pages/Home'
+import Shop from './Pages/Shop'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import LayoutSidebar from './components/LayoutSidebar'
@@ -18,7 +18,7 @@ import Products from './Pages/Products'
 import Orders from './Pages/Orders'
 
 
-import Shop from './Pages/Shop'
+// import Shop from './Pages/Shop'
 
 // Define router
 const router = createBrowserRouter(

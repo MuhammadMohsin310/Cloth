@@ -56,18 +56,11 @@ const About = () => {
       <section className="w-full h-auto px-5  lg:px-0    ">
         <div className="">
             {/* Background Image */}
-          <div className="relative h-96 flex  justify-center items-center text-center bg-gray-300 opacity-80 tracking-widest">
-            <img
-              src="./banner.jpg"
-              alt=""
-              className="absolute inset-0 w-full h-full opacity-90"
-              style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
-            />
-            <h1 className="relative  text-5xl font-bold bg-transparent">
-              {" "}
-             About Page Banner
-            </h1>
-          </div>
+            <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
+  {/* Background Image */}
+  <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
+  <h1 className="relative text-white text-5xl font-bold bg-transparent"> About</h1>
+</div>
           {/* Hero section Container */}
           <div >
           <div className="flex justify-between my-20 lg:gap-5 gap-34 px-7 lg:flex-row flex-col lg:text-left text-center     items-center mx-auto max-w-7xl">
