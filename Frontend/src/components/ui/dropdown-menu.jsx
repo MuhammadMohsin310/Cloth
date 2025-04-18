@@ -16,12 +16,15 @@ function DropdownMenuPortal({
   return (<DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />);
 }
 
-function DropdownMenuTrigger({
-  ...props
-}) {
-  return (<DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />);
+function DropdownMenuTrigger({ asChild = true, ...props }) {
+  return (
+    <DropdownMenuPrimitive.Trigger
+      asChild={asChild}
+      data-slot="dropdown-menu-trigger"
+      {...props}
+    />
+  );
 }
-
 function DropdownMenuContent({
   className,
   sideOffset = 4,

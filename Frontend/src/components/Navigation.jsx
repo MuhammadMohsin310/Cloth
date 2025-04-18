@@ -76,7 +76,7 @@ const Navbar = () => {
                   <SheetTrigger asChild>
                     <Button variant="outline">Cart</Button>
                   </SheetTrigger>
-                  <SheetContent  className="bg-white transition-transform duration-300 ease-in-out transform " >
+                  <SheetContent  className=" bg-white transition-transform duration-300 ease-in-out transform " >
                     <SheetHeader>
                       <SheetTitle>Add To Cart</SheetTitle>
                       <SheetDescription>
