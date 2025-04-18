@@ -34,8 +34,7 @@ const Shop = () => {
         console.log(response.data); // ✅ Should show the full response now
         setProducts(response.data.products);
         //
-        toast.success('Products loaded successfully!');
-        
+        toast.success("Products loaded successfully!");
       } catch (error) {
         console.error("Failed to fetch products ❌", error);
       }
@@ -52,9 +51,7 @@ const Shop = () => {
             <div>
               <h1 className="text-2xl font-bold">Shop</h1>
             </div>
-            <div>
-              <Breadcrumbdemo />
-            </div>
+            <div></div>
           </div>
           <div className="grid lg:grid-cols-5 grid-cols-1  mx-10 gap-4 mt-10">
             {Category.map((item, index) => (
@@ -84,18 +81,26 @@ const Shop = () => {
             {products?.map((item, index) => (
               <Card
                 key={index}
-                className="bg-white shadow-md rounded-lg  mt-4 flex  items-center h-96 flex-col gap-10"
+                className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
               >
                 <div className="h-56 w-full bg-gray-300 "></div>
-                <div className="text-center flex flex-col gap-7">
+                <div className="text-left px-3 flex flex-col gap-7">
                   <div>
-                    <div className="text-lg font-semibold">{item.name}</div>
+                    <div className="text-lg font-semibold">Product Name</div>
                     <div className="text-xs text-gray-500">
-                      {item.description}
+                      Product Description Will be here and it will be long
                     </div>
                   </div>
-                  <div>
-                    <div className="text-md ">{item.price}</div>
+                  <div className="flex justify-between items-center">
+                    <div className="text-md  ">
+                      <span className="line-through decoration-red-500 text-red-800 text-xs">
+                        99$
+                      </span>{" "}
+                      <span className="font-bold text-xl">66$</span>
+                    </div>
+                    <div>
+                      <button className="text-xs bg-green-200 p-[4px] rounded-lg">30% off</button>
+                    </div>
                   </div>
                 </div>
               </Card>
@@ -105,16 +110,22 @@ const Shop = () => {
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious  />
+                  <PaginationPrevious>
+                    <span>Previous</span>
+                  </PaginationPrevious>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink onClick={()=>{setCurrentPage(p=>Math.max(p-1,1))}}>{i+1}</PaginationLink>
+                  <PaginationLink>
+                    <span>1</span>
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext>
+                    <span>Next</span>
+                  </PaginationNext>
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
