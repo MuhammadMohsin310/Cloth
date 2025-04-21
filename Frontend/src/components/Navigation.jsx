@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa"; // Import the cart icon from react-icons
 import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
+import { MdDelete } from "react-icons/md";
 
 import {
   Sheet,
@@ -16,6 +17,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Card } from "./ui/card";
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -108,15 +110,40 @@ const Navbar = () => {
                     <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
                       <SheetHeader>
                         <SheetTitle>Add To Cart</SheetTitle>
-                        <SheetDescription className={"overflow-y-scroll h-[1000px]"}>
+                        <SheetDescription
+                          className={"overflow-y-scroll h-[1000px]"}
+                        >
                           Make changes to your profile here. Click save when
                           you're done.
-                          <div className="flex flex-col gap-4 py-4   ">
-                          <div className="border w-full h-10 ">
-                            <h1>Product</h1>
-                          </div>
-                         
-                       
+                          <div className="flex flex-col gap-1 py-4   ">
+                            <Card className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100">
+                              {/* Left Side: Product Info */}
+                              <div className="flex items-center    gap-2 justify-center">
+                              <div className="bg-gray-800 h-7 w-7 "></div>
+                              <div>
+                                <h1 className="text-sm font-semibold">
+                                  Product Name
+                                </h1>
+                                <p className="text-xs text-gray-500">
+                                  Quantity: 1
+                                </p>
+                                </div>
+                              </div>
+
+                              {/* Right Side: Controls */}
+                              <div className="flex items-center gap-3">
+                                <button className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600">
+                                  +
+                                </button>
+                                <button className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600">
+                                  -
+                                </button>
+                                <div className=" hover:text-red-600 cursor-pointer text-lg">
+                                  <MdDelete />
+                                </div>
+                              </div>
+                            </Card>
+                            <hr />
                           </div>
                         </SheetDescription>
                       </SheetHeader>

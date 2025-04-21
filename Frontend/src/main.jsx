@@ -7,8 +7,7 @@ import { createRoutesFromElements, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./pages/About";
-
-
+import { Provider } from "react-redux";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -22,6 +21,7 @@ import Orders from "./Pages/Orders";
 // import Shop from './Pages/Shop'
 // import AdminPanel from './Pages/AdminPanel'
 import Shop from "./Pages/Shop";
+import { store } from "./redux/store";
 
 // Define router
 const router = createBrowserRouter(
@@ -48,7 +48,9 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <Provider store={store}>
+    <StrictMode>
+      <RouterProvider router={router} />-
+    </StrictMode>
+  </Provider>
 );
