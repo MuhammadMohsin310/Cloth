@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa"; // Import the cart icon from react-icons
 import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
 import { MdDelete } from "react-icons/md";
+import { useSelector,useDispatch } from "react-redux";
+import { addToCart,removeFromCart,deleteFromCart } from "@/features/cart/cartSlice";
 
 import {
   Sheet,
@@ -15,11 +17,14 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/components/ui/sheet"; ``
 import { Button } from "@/components/ui/button";
 import { Card } from "./ui/card";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const CartItems=useSelector((state) => state.cart.cartItems);
+  console.log(CartItems[0])
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage mobile menu state
   const navigate = useNavigate();
@@ -108,52 +113,53 @@ const Navbar = () => {
                     </SheetTrigger>
 
                     <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
-                      <SheetHeader>
-                        <SheetTitle>Add To Cart</SheetTitle>
-                        <SheetDescription
-                          className={"overflow-y-scroll h-[1000px]"}
-                        >
-                          Make changes to your profile here. Click save when
-                          you're done.
-                          <div className="flex flex-col gap-1 py-4   ">
-                            <Card className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100">
-                              {/* Left Side: Product Info */}
-                              <div className="flex items-center    gap-2 justify-center">
-                              <div className="bg-gray-800 h-7 w-7 "></div>
-                              <div>
-                                <h1 className="text-sm font-semibold">
-                                  Product Name
-                                </h1>
-                                <p className="text-xs text-gray-500">
-                                  Quantity: 1
-                                </p>
-                                </div>
-                              </div>
+  <SheetHeader>
+    <SheetTitle>Add To Cart</SheetTitle>
+    <SheetDescription>
+      Make changes to your profile here. Click save when you're done.
+    </SheetDescription>
+  </SheetHeader>
 
-                              {/* Right Side: Controls */}
-                              <div className="flex items-center gap-3">
-                                <button className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600">
-                                  +
-                                </button>
-                                <button className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600">
-                                  -
-                                </button>
-                                <div className=" hover:text-red-600 cursor-pointer text-lg">
-                                  <MdDelete />
-                                </div>
-                              </div>
-                            </Card>
-                            <hr />
-                          </div>
-                        </SheetDescription>
-                      </SheetHeader>
-                      <div className="grid gap-4 py-4"></div>
-                      <SheetFooter>
-                        <SheetClose asChild>
-                          <Button type="submit">Save changes</Button>
-                        </SheetClose>
-                      </SheetFooter>
-                    </SheetContent>
+  {/* Cart items container */}
+  <div className="flex flex-col gap-1 ">
+    {CartItems.map((item, index) => (
+       <Card key={index} className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100">
+       {/* Left Side: Product Info */}
+       <div className="flex items-center gap-2 justify-center">
+         <div className="bg-gray-800 h-7 w-7"></div>
+         <div>
+           <h1 className="text-sm font-semibold">{item.name}</h1>
+           <span className="text-xs text-gray-500">Quantity : {item.quantity}</span>
+         </div>
+       </div>
+ 
+       {/* Right Side: Controls */}
+       <div className="flex items-center gap-3">
+         <button onClick={()=>{dispatch(addToCart(item))}} className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600">
+           +
+         </button>
+         <button onClick={()=>{dispatch(removeFromCart(item))}}  className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600">
+           -
+         </button>
+         <div onClick={()=>{dispatch(deleteFromCart(item))}} className="hover:text-red-600 cursor-pointer text-lg">
+           <MdDelete />
+         </div>
+       </div>
+     </Card>
+    ))}
+   
+
+    </div>
+    {/* Optional HR divider */}
+  
+
+  <SheetFooter>
+    <SheetClose asChild>
+      <Button type="submit">Save changes</Button>
+    </SheetClose>
+  </SheetFooter>
+</SheetContent>
+
                   </Sheet>
                 </li>
               </>
