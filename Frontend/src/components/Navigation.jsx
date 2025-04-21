@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { FaShoppingCart } from 'react-icons/fa'; // Import the cart icon from react-icons
+import { FaShoppingCart } from "react-icons/fa"; // Import the cart icon from react-icons
 import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
 
 import {
@@ -15,7 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,7 +43,7 @@ const Navbar = () => {
           </Link>
 
           {/* Mobile Menu Button (Hamburger Icon) */}
-          <button 
+          <button
             className="lg:hidden text-gray-700 p-2 rounded-md focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -104,11 +104,20 @@ const Navbar = () => {
                         <span>Cart</span>
                       </Button>
                     </SheetTrigger>
+
                     <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
                       <SheetHeader>
                         <SheetTitle>Add To Cart</SheetTitle>
-                        <SheetDescription>
-                          Make changes to your profile here. Click save when you're done.
+                        <SheetDescription className={"overflow-y-scroll h-[1000px]"}>
+                          Make changes to your profile here. Click save when
+                          you're done.
+                          <div className="flex flex-col gap-4 py-4   ">
+                          <div className="border w-full h-10 ">
+                            <h1>Product</h1>
+                          </div>
+                         
+                       
+                          </div>
                         </SheetDescription>
                       </SheetHeader>
                       <div className="grid gap-4 py-4"></div>
