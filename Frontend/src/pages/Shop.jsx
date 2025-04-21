@@ -15,11 +15,11 @@ import axiosInstance from "../services/axiosInstance";
 import { toast } from "react-toastify";
 const Shop = () => {
   const [Category, setCategory] = useState([
-    { name: "Cloths", items: 5,img:'./men-sample.jpg' },
-    { name: "Shoes", items: 10,img:'./children-sample.jpg'  },
-    { name: "Accessories", items: 15 ,img:'./women-1.jpg' },
-    { name: "Electronics", items: 20 ,img:'./men-sample.jpg' },
-    { name: "Home Appliances", items: 25,img:'./children-sample.jpg'  },
+    { name: "Cloths", items: 5, img: './men-sample.jpg' },
+    { name: "Shoes", items: 10, img: './children-sample.jpg' },
+    { name: "Accessories", items: 15, img: './women-1.jpg' },
+    { name: "Electronics", items: 20, img: './men-sample.jpg' },
+    { name: "Home Appliances", items: 25, img: './children-sample.jpg' },
   ]);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -67,31 +67,35 @@ const Shop = () => {
                 style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
               >
                 <div className="text-white text-lg font-semibold">{item.name}</div>
-                <div className="text-slate text-sm text-gray-500">{item.items} items</div>
+                <div className="text-sm text-gray-500">{item.items} items</div>
               </Card>
             ))}
           </div>
+
         </div>
-        <hr />
+
         {/* //SHOP SECTION */}
         {/* Brands */}
-        <div className="w-full  bg-gray-200 opacity-85 py-10 flex justify-center items-center h-88    ">
-          <div>
-            <h1 className="text-4xl font-bold">Here are our brands</h1>
-          </div>
+        <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest mt-6">
+          {/* Background Image */}
+          <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
+          {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
         </div>
-        <hr />
+
+        {/* <hr /> */}
         {/* Brands */}
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
-          <div className="grid grid-cols-4 gap-4 mt-10 ">
+          <div className="grid lg:grid-cols-4 grid-cols-1 mx-10 gap-4 mt-10 ">
             {products?.map((item, index) => (
               <Card
                 key={index}
                 className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
               >
-                <div className="h-56 w-full bg-gray-300 ">
-               
+                <div className=" h-56 w-full bg-gray-300 overflow-hidden bg-center bg-cover"
+                  style={{ backgroundImage: `url(./children-sample.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+
+
                 </div>
                 <div className="text-left px-3 flex flex-col gap-7">
                   <div>
