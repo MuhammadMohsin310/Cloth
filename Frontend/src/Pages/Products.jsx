@@ -1,78 +1,74 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
+import React from 'react'
+import { AppSidebar } from "@/components/app-sidebar"
+// import { ChartAreaInteractive } from "@/components/chart-area-interactive"
+// import { DataTable } from "@/components/data-table"
+import { SectionCards } from "@/components/section-cards"
+import { SiteHeader } from "@/components/site-header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { Outlet } from 'react-router-dom'
 
-const Products = () => {
-  const { register, handleSubmit, reset } = useForm();
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
-  const onSubmit = async (data) => {
-    console.log("Form Data:", data); // 👉 You get the form data here as an object
 
-    try {
-      // Sending form data to backend
-      const response = await axios.post("http://your-backend-api.com/products", data);
-      console.log("Response from backend:", response.data);
 
-      // Reset form after successful submission
-      reset();
-    } catch (error) {
-      console.error("Error sending data:", error);
-    }
-  };
-
+function Users() {
   return (
-    <div className="max-w-md mx-auto p-6 shadow-lg rounded-md bg-white">
-      <h2 className="text-2xl font-bold mb-6 text-center">Create Product</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    < >
+
+      <div className=''>
         <div>
-          <label className="block mb-1 font-medium">Product Name</label>
-          <input
-            type="text"
-            {...register("name", { required: true })}
-            className="w-full border p-2 rounded"
-            placeholder="Enter product name"
-          />
+          <SidebarInset>
+            <SiteHeader title="Product Page" />
+            <div className="flex flex-1 flex-col bg-gray-100 ">
+              <div className="@container/main flex flex-1 flex-col gap-2">
+                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+
+                </div>
+              </div>
+            </div>
+          </SidebarInset>
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Description</label>
-          <textarea
-            {...register("description", { required: true })}
-            className="w-full border p-2 rounded"
-            placeholder="Enter description"
-          />
-        </div>
+        <div className="px-6"> {/* This adds left/right padding */}
+  <Table className="bg-white rounded-md w-full">
+    <TableCaption className="py-2">A list of your recent invoices.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="w-[100px] px-4 py-2 text-red-600">Id</TableHead>
+        <TableHead className="px-4 py-2 text-red-600">Name</TableHead>
+        <TableHead className="px-4 py-2 text-red-600">Description</TableHead>
+        <TableHead className="px-4 py-2 text-red-600" text-red-600>Price</TableHead>
+        <TableHead className="px-4 py-2 text-red-600" text-red-600>Description</TableHead>
+        <TableHead className="text-right px-4 py-2 text-red-600">Amount</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-medium px-4 py-2">User_id</TableCell>
+        <TableCell className="px-4 py-2">Aarij</TableCell>
+        <TableCell className="px-4 py-2">1482 Oakridge Avenue Springfield, United States</TableCell>
+        <TableCell className="px-4 py-2">1482 Oakridge Avenue Springfield, United States</TableCell>
+        <TableCell className="px-4 py-2">1482 Oakridge Avenue Springfield, United States</TableCell>
+        <TableCell className="text-right px-4 py-2">$298.00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</div>
 
-        <div>
-          <label className="block mb-1 font-medium">Price</label>
-          <input
-            type="number"
-            step="0.01"
-            {...register("price", { required: true })}
-            className="w-full border p-2 rounded"
-            placeholder="Enter price"
-          />
-        </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Category</label>
-          <input
-            type="text"
-            {...register("category", { required: true })}
-            className="w-full border p-2 rounded"
-            placeholder="Enter category"
-          />
-        </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
-        >
-          Create Product
-        </button>
-      </form>
-    </div>
-  );
-};
+      </div>
 
-export default Products;
+    </>
+  )
+}
+
+export default Users

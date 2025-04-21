@@ -8,11 +8,12 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { Outlet } from 'react-router-dom'
   
 
+
 function Orders() {
   return (
     <div className=''>
     <SidebarInset>
-      <SiteHeader />
+      <SiteHeader title="Order Page" />
       <div className="flex flex-1 flex-col bg-gray-100">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
