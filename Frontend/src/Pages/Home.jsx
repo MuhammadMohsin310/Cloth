@@ -22,7 +22,7 @@ function Home() {
 
 
          {/*Categories Section */}
-         <div className='bg-white p-10 md:p-20'>
+         <div className=' bg-white p-10 md:p-20'>
         <div className='flex flex-col md:flex-row items-center mx-5 md:mx-10'>
           <div className='w-full md:w-full justify-center p-6 text-center md:text-left'>
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Customer Favorites</h3>
@@ -64,7 +64,7 @@ function Home() {
 
      {/*Dishes Section */}
      <div className='bg-white p-10 md:p-20 sm:p-10 '>
-        <div className='flex flex-col md:flex-row items-center mx-5 md:mx-10'>
+        <div className=' flex flex-col md:flex-row items-center mx-5 md:mx-10'>
           <div className='w-full md:w-full justify-center text-center md:text-left'>
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Featured Products</h3>
             <h1 className='text-center text-2xl md:text-4xl font-bold mt-5'>Best Seller Product</h1>

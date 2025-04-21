@@ -7,6 +7,10 @@ import { createRoutesFromElements, Route, Router } from 'react-router-dom'
 import Layout from './components/Layout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import About from './pages/About'
+<<<<<<< HEAD
+=======
+// import Shop from './Pages/Shop'
+>>>>>>> 402f923c27b997f711afaefebaa30b3f01103c56
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import LayoutSidebar from './components/LayoutSidebar'
@@ -19,7 +23,7 @@ import Orders from './Pages/Orders'
 
 // import Shop from './Pages/Shop'
 // import AdminPanel from './Pages/AdminPanel'
-import Shop from './pages/Shop'
+import Shop from './Pages/Shop'
 
 // Define router
 const router = createBrowserRouter(

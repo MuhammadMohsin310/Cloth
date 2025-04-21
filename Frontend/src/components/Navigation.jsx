@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { FaShoppingCart } from 'react-icons/fa'; // Import the cart icon from react-icons
+import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
+
 import {
   Sheet,
   SheetClose,
@@ -13,7 +16,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button"
-// import { Menu, X } from "lucide-react"; // Icons for Hamburger Menu
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,13 +42,13 @@ const Navbar = () => {
             <h1 className="text-black text-3xl font-bold">Store Name</h1>
           </Link>
 
-          {/* Mobile Menu Button */}
-          {/* <button 
+          {/* Mobile Menu Button (Hamburger Icon) */}
+          <button 
             className="lg:hidden text-gray-700 p-2 rounded-md focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button> */}
+          </button>
 
           {/* Navbar Links - Desktop */}
           <div className="hidden lg:flex lg:w-auto lg:order-1">
@@ -71,31 +73,6 @@ const Navbar = () => {
                   Contact Us
                 </NavLink>
               </li>
-              <li>
-                <Sheet className="bg-white  ">
-                  <SheetTrigger asChild>
-                    <Button variant="outline">Cart</Button>
-                  </SheetTrigger>
-                  <SheetContent  className=" bg-white transition-transform duration-300 ease-in-out transform " >
-                    <SheetHeader>
-                      <SheetTitle>Add To Cart</SheetTitle>
-                      <SheetDescription>
-                        Make changes to your profile here. Click save when
-                        you're done.
-                      </SheetDescription>
-                    </SheetHeader>
-                    <div className="grid gap-4 py-4">
-                      
-                      
-                    </div>
-                    <SheetFooter>
-                      <SheetClose asChild>
-                        <Button type="submit">Save changes</Button>
-                      </SheetClose>
-                    </SheetFooter>
-                  </SheetContent>
-                </Sheet>
-              </li>
             </ul>
           </div>
 
@@ -116,18 +93,33 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link
-                  to="/login"
-                  className="bg-gray-800 text-white rounded-md  px-4 py-2"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="bg-gray-800 text-white rounded-md px-4 py-2"
-                >
-                  Sign Up
-                </Link>
+                <li className="list-none">
+                  <Sheet className="bg-white">
+                    <SheetTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="border-transparent flex items-center space-x-2"
+                      >
+                        <FaShoppingCart /> {/* Cart icon */}
+                        <span>Cart</span>
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
+                      <SheetHeader>
+                        <SheetTitle>Add To Cart</SheetTitle>
+                        <SheetDescription>
+                          Make changes to your profile here. Click save when you're done.
+                        </SheetDescription>
+                      </SheetHeader>
+                      <div className="grid gap-4 py-4"></div>
+                      <SheetFooter>
+                        <SheetClose asChild>
+                          <Button type="submit">Save changes</Button>
+                        </SheetClose>
+                      </SheetFooter>
+                    </SheetContent>
+                  </Sheet>
+                </li>
               </>
             )}
           </div>
@@ -170,7 +162,7 @@ const Navbar = () => {
                 </li>
               ) : (
                 <>
-                  <div className="flex justify-center gap-3">
+                  {/* <div className="flex justify-center gap-3">
                     <button className="py-5">
                       <Link
                         to="/login"
@@ -187,7 +179,7 @@ const Navbar = () => {
                         Sign Up
                       </Link>
                     </button>
-                  </div>
+                  </div> */}
                 </>
               )}
             </ul>

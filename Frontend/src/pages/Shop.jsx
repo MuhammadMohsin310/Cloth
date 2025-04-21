@@ -15,11 +15,11 @@ import axiosInstance from "../services/axiosInstance";
 import { toast } from "react-toastify";
 const Shop = () => {
   const [Category, setCategory] = useState([
-    { name: "Cloths", items: 5 },
-    { name: "Shoes", items: 10 },
-    { name: "Accessories", items: 15 },
-    { name: "Electronics", items: 20 },
-    { name: "Home Appliances", items: 25 },
+    { name: "Cloths", items: 5,img:'./men-sample.jpg' },
+    { name: "Shoes", items: 10,img:'./children-sample.jpg'  },
+    { name: "Accessories", items: 15 ,img:'./women-1.jpg' },
+    { name: "Electronics", items: 20 ,img:'./men-sample.jpg' },
+    { name: "Home Appliances", items: 25,img:'./children-sample.jpg'  },
   ]);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,22 +45,29 @@ const Shop = () => {
   return (
     <>
       <section className="w-full   ">
+        <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
+          {/* Background Image */}
+          <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
+          {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
+        </div>
+
         {/* //SHOP SECTION */}
         <div className=" w-full mx-auto max-w-7xl  bg-gray-3 h-auto py-10  ">
           <div className="flex  justify-between items-center lg:mx-0 mx-10 lg:flex-row flex-col">
             <div>
-              <h1 className="text-2xl font-bold">Shop</h1>
+              {/* <h1 className="text-2xl font-bold">Shop</h1> */}
             </div>
             <div></div>
           </div>
-          <div className="grid lg:grid-cols-5 grid-cols-1  mx-10 gap-4 mt-10">
+          <div className="grid lg:grid-cols-5 grid-cols-1 mx-10 gap-4 mt-10">
             {Category.map((item, index) => (
               <Card
                 key={index}
                 className="bg-white shadow-md rounded-lg p-4 mt-4 flex justify-center items-center h-96 flex-col"
+                style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
               >
-                <div className="text-lg font-semibold">{item.name}</div>
-                <div className="text-sm text-gray-500">{item.items} items</div>
+                <div className="text-white text-lg font-semibold">{item.name}</div>
+                <div className="text-slate text-sm text-gray-500">{item.items} items</div>
               </Card>
             ))}
           </div>
@@ -83,7 +90,9 @@ const Shop = () => {
                 key={index}
                 className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
               >
-                <div className="h-56 w-full bg-gray-300 "></div>
+                <div className="h-56 w-full bg-gray-300 ">
+               
+                </div>
                 <div className="text-left px-3 flex flex-col gap-7">
                   <div>
                     <div className="text-lg font-semibold">Product Name</div>
