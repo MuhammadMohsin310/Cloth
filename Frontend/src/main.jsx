@@ -20,7 +20,7 @@ import Orders from './Pages/Orders'
 
 // import Shop from './Pages/Shop'
 // import AdminPanel from './Pages/AdminPanel'
-import Shop from './pages/Shop'
+import Shop from './Pages/Shop'
 
 // Define router
 const router = createBrowserRouter(
