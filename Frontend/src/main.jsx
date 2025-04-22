@@ -22,7 +22,7 @@ import Orders from "./Pages/Orders";
 // import AdminPanel from './Pages/AdminPanel'
 import Shop from './Pages/Shop'
 import ProductDesc from './Pages/ProductDesc'
-import Shop from "./Pages/Shop";
+
 import { store } from "./redux/store";
 
 // Define router

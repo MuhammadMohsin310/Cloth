@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState  } from 'react'
 import { useForm } from 'react-hook-form'
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset } from "@/components/ui/sidebar"
 import { MdDelete } from "react-icons/md";
+import axios from 'axios';
 
 import {
   Table,
@@ -22,9 +23,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import axiosInstance from '@/services/axiosInstance';
 
-function Users() {
+function Products() {
   const [showForm, setShowForm] = useState(false)
+
+
+
+  
   const [products, setProducts] = useState([
     {
       id: '001',
@@ -42,7 +48,7 @@ function Users() {
     formState: { errors }
   } = useForm()
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     const newProduct = {
       id: String(products.length + 1).padStart(3, '0'),
       ...data,
@@ -51,6 +57,32 @@ function Users() {
     setProducts([...products, newProduct])
     setShowForm(false)
     reset()
+
+
+ 
+      try {
+        const response = await axiosInstance.post("/products/", data);
+        const token = response.data.token;
+        if (token) {
+          Cookies.set("token", token, {
+            expires: 7, // Token expires in 7 days
+            secure: false, // Use true in production (HTTPS)
+            sameSite: "strict",
+          });
+
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Display error message to the user
+        alert("something went wrong");
+      }
+    
+
+
+
+
+
+
   }
 
   const deleteProduct = (id) => {
@@ -117,7 +149,7 @@ function Users() {
                   </div>
 
                   <div className="flex justify-end">
-                    <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md">
+                    <button onSubmit={handleSubmit(onSubmit)} type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md">
                       Submit
                     </button>
                   </div>
@@ -167,4 +199,4 @@ function Users() {
   )
 }
 
-export default Users
+export default Products
