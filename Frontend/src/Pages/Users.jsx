@@ -26,7 +26,7 @@ function Users() {
       <div className=''>
         <div>
           <SidebarInset>
-            <SiteHeader title="User Page" />
+            <SiteHeader title="Users" />
             <div className="flex flex-1 flex-col bg-gray-100 ">
               <div className="@container/main flex flex-1 flex-col gap-2">
                 <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
@@ -39,13 +39,13 @@ function Users() {
 
         <div className="px-6"> {/* This adds left/right padding */}
   <Table className="bg-white rounded-md w-full">
-    <TableCaption className="py-2">A list of your recent invoices.</TableCaption>
+    <TableCaption className="py-2">List of All Users.</TableCaption>
     <TableHeader>
       <TableRow>
         <TableHead className="w-[100px] px-4 py-2 text-red-600">Id</TableHead>
         <TableHead className="px-4 py-2 text-red-600">Name</TableHead>
         <TableHead className="px-4 py-2 text-red-600" text-red-600>Address</TableHead>
-        <TableHead className="text-right px-4 py-2 text-red-600">Amount</TableHead>
+        <TableHead className="text-right px-4 py-2 text-red-600">User Email</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
@@ -53,7 +53,7 @@ function Users() {
         <TableCell className="font-medium px-4 py-2">User_id</TableCell>
         <TableCell className="px-4 py-2">Aarij</TableCell>
         <TableCell className="px-4 py-2">1482 Oakridge Avenue Springfield, United States</TableCell>
-        <TableCell className="text-right px-4 py-2">$298.00</TableCell>
+        <TableCell className="text-right px-4 py-2">aarijhere@gmail.com</TableCell>
       </TableRow>
     </TableBody>
   </Table>

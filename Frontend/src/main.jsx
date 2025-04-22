@@ -21,6 +21,7 @@ import Orders from './Pages/Orders'
 // import Shop from './Pages/Shop'
 // import AdminPanel from './Pages/AdminPanel'
 import Shop from './Pages/Shop'
+import ProductDesc from './Pages/ProductDesc'
 
 // Define router
 const router = createBrowserRouter(
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/productdesc" element={<ProductDesc />} />
         {/* <Route path="/menu" element={<Menu />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart/>} /> */}
