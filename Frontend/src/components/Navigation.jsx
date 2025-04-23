@@ -5,10 +5,26 @@ import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa"; // Import the cart icon from react-icons
 import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
 import { MdDelete } from "react-icons/md";
-import { useSelector,useDispatch } from "react-redux";
-import { addToCart,removeFromCart,deleteFromCart } from "@/features/cart/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  deleteFromCart,
+} from "@/features/cart/cartSlice";
 import { MdShoppingCartCheckout } from "react-icons/md";
+import { LoginForm } from "./LoginForm";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Sheet,
   SheetClose,
@@ -18,14 +34,16 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"; ``
+} from "@/components/ui/sheet";
+``;
 import { Button } from "@/components/ui/button";
 import { Card } from "./ui/card";
+import { SignUpForm } from "./SignUpForm";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const CartItems=useSelector((state) => state.cart.cartItems);
-  console.log(CartItems[0])
+  const CartItems = useSelector((state) => state.cart.cartItems);
+  console.log(CartItems[0]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage mobile menu state
   const navigate = useNavigate();
@@ -114,55 +132,118 @@ const Navbar = () => {
                     </SheetTrigger>
 
                     <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
-  <SheetHeader>
-    <SheetTitle>Add To Cart</SheetTitle>
-    <SheetDescription>
-      Make changes to your profile here. Click save when you're done.
-    </SheetDescription>
-  </SheetHeader>
+                      <SheetHeader>
+                        <SheetTitle>Add To Cart</SheetTitle>
+                        <SheetDescription>
+                          Make changes to your profile here. Click save when
+                          you're done.
+                        </SheetDescription>
+                      </SheetHeader>
 
-  {/* Cart items container */}
-  <div className="flex flex-col gap-1 ">
-    {CartItems.map((item, index) => (
-       <Card key={index} className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100">
-       {/* Left Side: Product Info */}
-       <div className="flex items-center gap-2 justify-center">
-         <div className="bg-gray-800 h-7 w-7"></div>
-         <div>
-           <h1 className="text-sm font-semibold">{item.name}</h1>
-           <span className="text-xs text-gray-500">Quantity : {item.quantity}</span>
-         </div>
-       </div>
- 
-       {/* Right Side: Controls */}
-       <div className="flex items-center gap-3">
-         <button onClick={()=>{dispatch(addToCart(item))}} className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600">
-           +
-         </button>
-         <button onClick={()=>{dispatch(removeFromCart(item))}}  className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600">
-           -
-         </button>
-         <div onClick={()=>{dispatch(deleteFromCart(item))}} className="hover:text-red-600 cursor-pointer text-lg">
-           <MdDelete />
-         </div>
-       </div>
-     </Card>
-    ))}
-   
+                      {/* Cart items container */}
+                      <div className="flex flex-col gap-1 ">
+                        {CartItems.map((item, index) => (
+                          <Card
+                            key={index}
+                            className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100"
+                          >
+                            {/* Left Side: Product Info */}
+                            <div className="flex items-center gap-2 justify-center">
+                              <div className="bg-gray-800 h-7 w-7"></div>
+                              <div>
+                                <h1 className="text-sm font-semibold">
+                                  {item.name}
+                                </h1>
+                                <span className="text-xs text-gray-500">
+                                  Quantity : {item.quantity}
+                                </span>
+                              </div>
+                            </div>
 
-    </div>
-    {/* Optional HR divider */}
-  
+                            {/* Right Side: Controls */}
+                            <div className="flex items-center gap-3">
+                              <button
+                                onClick={() => {
+                                  dispatch(addToCart(item));
+                                }}
+                                className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600"
+                              >
+                                +
+                              </button>
+                              <button
+                                onClick={() => {
+                                  dispatch(removeFromCart(item));
+                                }}
+                                className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600"
+                              >
+                                -
+                              </button>
+                              <div
+                                onClick={() => {
+                                  dispatch(deleteFromCart(item));
+                                }}
+                                className="hover:text-red-600 cursor-pointer text-lg"
+                              >
+                                <MdDelete />
+                              </div>
+                            </div>
+                          </Card>
+                        ))}
+                      </div>
+                      {/* Optional HR divider */}
 
-  <SheetFooter>
-    <SheetClose asChild>
-     <a href="/Checkout"> <Button className="bg-black text-white w-full" type="submit"><MdShoppingCartCheckout /> Check Out</Button></a>
-    </SheetClose>
-  </SheetFooter>
-</SheetContent>
-
+                      <SheetFooter>
+                        <SheetClose asChild>
+                          <a href="/Checkout">
+                            {" "}
+                            <Button
+                              className="bg-black text-white w-full"
+                              type="submit"
+                            >
+                              <MdShoppingCartCheckout /> Check Out
+                            </Button>
+                          </a>
+                        </SheetClose>
+                      </SheetFooter>
+                    </SheetContent>
                   </Sheet>
                 </li>
+                {/* Login Form Dialog */}
+                <Dialog>
+                  <div className="flex justify-center gap-3 ">
+                    <DialogTrigger asChild>
+                      <button className="py-5 text-black ">
+                        <span className=" mt-2 border rounded-md hover:bg-gray-400 hover:text-white  px-4 py-2">
+                          Login{" "}
+                        </span>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px] bg-white">
+                      <LoginForm />
+                    </DialogContent>
+                    
+                  </div>
+                </Dialog>
+                  {/* Login Form Dialog */}
+                  {/* SignUp Form Dialog */}
+                <Dialog>
+                  <div className="flex justify-center gap-3 ">
+                    <DialogTrigger asChild>
+                      <button className="py-5 text-black ">
+                        <span className=" mt-2 border rounded-md hover:bg-gray-400 hover:text-white  px-4 py-2">
+                          Signup{" "}
+                        </span>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px] bg-white">
+                     <div>
+                      <SignUpForm/>
+                     </div>
+                    </DialogContent>
+                    
+                  </div>
+                </Dialog>
+                  {/* SignUp Form Dialog */}
               </>
             )}
           </div>
@@ -204,26 +285,7 @@ const Navbar = () => {
                   </button>
                 </li>
               ) : (
-                <>
-                  {/* <div className="flex justify-center gap-3">
-                    <button className="py-5">
-                      <Link
-                        to="/login"
-                        className=" mt-2 bg-green-500 text-white rounded-md hover:bg-[#559e5b] px-4 py-2"
-                      >
-                        Login{" "}
-                      </Link>
-                    </button>
-                    <button className="py-3">
-                      <Link
-                        to="/signup"
-                        className="mt-2 bg-green-500 text-white rounded-md hover:bg-[#559e5b] px-4  py-2"
-                      >
-                        Sign Up
-                      </Link>
-                    </button>
-                  </div> */}
-                </>
+                <></>
               )}
             </ul>
           </div>
