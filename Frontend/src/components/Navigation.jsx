@@ -13,7 +13,12 @@ import {
 } from "@/features/cart/cartSlice";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { LoginForm } from "./LoginForm";
-
+import {
+  openLoginDialog,
+  closeLoginDialog,
+  closeSignUpDialog,
+  openSignUpDialog,
+} from "@/features/dialog/dialogSlice";
 import {
   Dialog,
   DialogContent,
@@ -41,6 +46,8 @@ import { Card } from "./ui/card";
 import { SignUpForm } from "./SignUpForm";
 
 const Navbar = () => {
+  const openSignUp = useSelector((state) => state.dialog.isSignUpOpen);
+  const openLogin = useSelector((state) => state.dialog.isLoginOpen);
   const dispatch = useDispatch();
   const CartItems = useSelector((state) => state.cart.cartItems);
   console.log(CartItems[0]);
@@ -209,41 +216,71 @@ const Navbar = () => {
                   </Sheet>
                 </li>
                 {/* Login Form Dialog */}
-                <Dialog>
+                <Dialog
+                  open={openLogin}
+                  onOpenChange={(openLogin) => dispatch(closeLoginDialog())}
+                >
                   <div className="flex justify-center gap-3 ">
                     <DialogTrigger asChild>
-                      <button className="py-5 text-black ">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(openLoginDialog());
+                          console.log("Login Dialog Opened");
+                        }}
+                        className="py-5 text-black "
+                      >
                         <span className=" mt-2 border rounded-md hover:bg-gray-400 hover:text-white  px-4 py-2">
                           Login{" "}
                         </span>
                       </button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px] bg-white">
+                      <DialogHeader hidden>
+                        <DialogTitle>Sign Up</DialogTitle>
+                        <DialogDescription>
+                          Create an account to enjoy exclusive benefits.
+                        </DialogDescription>
+                      </DialogHeader>
                       <LoginForm />
                     </DialogContent>
-                    
                   </div>
                 </Dialog>
-                  {/* Login Form Dialog */}
-                  {/* SignUp Form Dialog */}
-                <Dialog>
+                {/* Login Form Dialog */}
+                {/* SignUp Form Dialog */}
+                <Dialog
+                  open={openSignUp}
+                  onOpenChange={(openSignUp) => dispatch(closeSignUpDialog())}
+                >
                   <div className="flex justify-center gap-3 ">
                     <DialogTrigger asChild>
-                      <button className="py-5 text-black ">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(openSignUpDialog());
+                        }}
+                        className="py-5 text-black "
+                      >
                         <span className=" mt-2 border rounded-md hover:bg-gray-400 hover:text-white  px-4 py-2">
                           Signup{" "}
                         </span>
                       </button>
                     </DialogTrigger>
+
                     <DialogContent className="sm:max-w-[425px] bg-white">
-                     <div>
-                      <SignUpForm/>
-                     </div>
+                      <DialogHeader hidden>
+                        <DialogTitle>Sign Up</DialogTitle>
+                        <DialogDescription>
+                          Create an account to enjoy exclusive benefits.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div>
+                        <SignUpForm />
+                      </div>
                     </DialogContent>
-                    
                   </div>
                 </Dialog>
-                  {/* SignUp Form Dialog */}
+                {/* SignUp Form Dialog */}
               </>
             )}
           </div>

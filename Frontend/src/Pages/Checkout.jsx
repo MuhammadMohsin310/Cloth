@@ -11,6 +11,9 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "../services/axiosInstance";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "@/validations/formSchema";
+import { toast } from "react-toastify";
+import { openLoginDialog } from "@/features/dialog/dialogSlice";
+
 import {
   addToCart,
   removeFromCart,
@@ -29,6 +32,7 @@ const Checkout = () => {
   } = useForm({
     resolver:zodResolver(checkoutSchema)
   });
+  
   const onSubmit = async (data) => {
     const payload = {
         ...data,          // all form fields (name, email, phone, address, etc.)
@@ -37,10 +41,13 @@ const Checkout = () => {
     try {
       const response = await axios.post("/order", payload);
       console.log("Contact Done:",data);
+      toast.success(" Order placedsuccessfully!");
      
     } catch (error) {
-      console.error("Failed:", error);
-      alert("An error occurred while signing up");
+      
+     dispatch(openLoginDialog())
+      toast.error("You need to loggined!");
+     
     }
   };
   return (

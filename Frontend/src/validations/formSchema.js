@@ -32,3 +32,35 @@ export  const checkoutSchema=z.object({
         "Invalid Pakistani phone number (should be 11 digits starting with 03)",
     }),
 })
+
+export const signUpSchema = z.object({
+  username: z
+  .string({ required_error: "Name is required" })
+  .trim()
+  .nonempty({ message: "Name cannot be empty" })
+  .min(3, { message: "Name must be at least 3 characters long" })
+  .regex(/^[a-zA-Z\s]+$/, { message: "Name must only contain letters" }),
+  email: z
+  .string({ required_error: "Email is required" })
+  .trim()
+  .nonempty({ message: "Email cannot be empty" })
+  .email("Invalid email address"),
+  password: z
+  .string({ required_error: "Password is required" })
+  .trim()
+  .nonempty({ message: "Password cannot be empty" })
+  .min(8, { message: "Password must be at least 8 characters long" })
+
+})
+export const loginSchema = z.object({
+  email: z
+  .string({ required_error: "Email is required" })
+  .trim()
+  .nonempty({ message: "Email cannot be empty" })
+  .email("Invalid email address"),
+  password: z
+  .string({ required_error: "Password is required" })
+  .trim()
+  .nonempty({ message: "Password cannot be empty" })
+  .min(8, { message: "Password must be at least 8 characters long" })
+})
