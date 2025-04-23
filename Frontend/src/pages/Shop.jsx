@@ -111,9 +111,9 @@ const Shop = () => {
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
           <div className="grid lg:grid-cols-4 grid-cols-1 mx-10 gap-4 mt-10 ">
-            {products?.map((product, index) => (
+            {products?.map((product) => (
               <Card
-                key={index}
+                key={product._id}
                 className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
               >
                 <div
@@ -173,7 +173,7 @@ const Shop = () => {
           isActive={currentPage === index +1}
           onClick={() => setCurrentPage(index +1)}
         >
-          <span>{index +1 }</span>
+          <span>{index + 1 }</span>
         </PaginationLink>
       </PaginationItem>
     ))}

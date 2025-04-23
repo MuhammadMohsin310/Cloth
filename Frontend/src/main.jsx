@@ -22,6 +22,7 @@ import Orders from "./Pages/Orders";
 // import AdminPanel from './Pages/AdminPanel'
 import Shop from "./Pages/Shop";
 import { store } from "./redux/store";
+import Checkout from "./Pages/Checkout";
 
 // Define router
 const router = createBrowserRouter(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* <Route path="/menu" element={<Menu />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart/>} /> */}

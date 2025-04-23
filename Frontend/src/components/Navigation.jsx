@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react"; // Import Hamburger and Close icons
 import { MdDelete } from "react-icons/md";
 import { useSelector,useDispatch } from "react-redux";
 import { addToCart,removeFromCart,deleteFromCart } from "@/features/cart/cartSlice";
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 import {
   Sheet,
@@ -155,7 +156,7 @@ const Navbar = () => {
 
   <SheetFooter>
     <SheetClose asChild>
-      <Button type="submit">Save changes</Button>
+     <a href="/Checkout"> <Button className="bg-black text-white w-full" type="submit"><MdShoppingCartCheckout /> Check Out</Button></a>
     </SheetClose>
   </SheetFooter>
 </SheetContent>
