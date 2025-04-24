@@ -17,7 +17,7 @@ function Home() {
 <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
+  <h2 className=" relative text-white text-4xl tracking-tighter font-bold bg-transparent"> Shop Smart. Live Better. Style Delivered to Your Door</h2>
 </div>
 
 
@@ -146,7 +146,7 @@ function Home() {
  <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./women.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Banner</h1> */}
+  <h1 className="relative text-white tracking-tighter text-4xl font-bold bg-transparent"> Save Big Today – Up to 50% Off Sitewide!</h1>
 </div>
  
 
