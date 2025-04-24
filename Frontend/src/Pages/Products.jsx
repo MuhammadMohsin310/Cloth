@@ -136,11 +136,21 @@ function Products() {
                     />
                     {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
                   </div>
+                  <div>
+                    <label className="block mb-1 text-sm font-medium">Actual Price</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      {...register("price", { required: "Actual Price is required" })}
+                      className="w-full px-3 py-2 border rounded-md"
+                    />
+                    {errors.price && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>}
+                  </div>
 
                   <div>
                     <label className="block mb-1 text-sm font-medium">Description</label>
                     <textarea
-                      {...register("description")}
+                      {...register("desc")}
                       className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
