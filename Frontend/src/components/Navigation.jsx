@@ -296,13 +296,13 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="py-2 border-b">
-                <NavLink to="/menu" onClick={() => setIsMenuOpen(false)}>
-                  Menu
+                <NavLink to="/shop" onClick={() => setIsMenuOpen(false)}>
+                  Shop
                 </NavLink>
               </li>
               <li className="py-2 border-b">
-                <NavLink to="/cart" onClick={() => setIsMenuOpen(false)}>
-                  Cart
+                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
+                  About
                 </NavLink>
               </li>
               <li className="py-2 border-b">

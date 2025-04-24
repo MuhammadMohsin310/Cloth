@@ -64,7 +64,7 @@ const Shop = () => {
             className="absolute inset-0 w-full h-full opacity-90"
             style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
           />
-          {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
+          <h1 className="relative text-white text-4xl tracking-tighter font-bold bg-transparent">Your Favorites, Organized – Browse by What Matters</h1>
         </div>
 
         {/* //SHOP SECTION */}
@@ -103,7 +103,7 @@ const Shop = () => {
             className="absolute inset-0 w-full h-full opacity-90"
             style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
           />
-          {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
+          <h1 className="relative text-white tracking-tighter text-4xl font-bold bg-transparent"> Save Big Today – Up to 50% Off Sitewide!</h1>
         </div>
 
         {/* <hr /> */}
@@ -134,13 +134,13 @@ const Shop = () => {
                   <div>
                     <div className="text-lg font-semibold">{product.name}</div>
                     <div className="text-xs text-gray-500">
-                      Product Description Will be here and it will be long
+                      {product.desc}
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
                     <div className="text-md  ">
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
-                        99$
+                       {product.price}$
                       </span>{" "}
                       <span className="font-bold text-xl">66$</span>
                     </div>
