@@ -34,7 +34,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -42,10 +42,13 @@ const Shop = () => {
         const response = await axiosInstance.get(
           `/products?page=${currentPage}&limit=${itemsPerPage}`
         );
-        console.log(response.data); // ✅ Should show the full response now
+        console.log(response.data,"producta"); // ✅ Should show the full response now
         setProducts(response.data.products);
         setTotalPages(response.data.totalPages);
         console.log(totalPages);
+
+        setTotalPages(response.data.totalPages ); 
+    console.log(totalPages)
         //
         toast.success("Products loaded successfully!");
       } catch (error) {
@@ -166,7 +169,7 @@ const Shop = () => {
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
                         {product.price}$
                       </span>{" "}
-                      <span className="font-bold text-xl">66$</span>
+                      <span className="font-bold text-xl">{product.actualprice}</span>
                     </div>
                     <div>
                       <Button
