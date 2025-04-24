@@ -2,25 +2,21 @@ import { StrictMode } from "react";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-// import { CartProvider } from './context/CartContext'
 import { createRoutesFromElements, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./pages/About";
 import { Provider } from "react-redux";
-
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import LayoutSidebar from "./components/LayoutSidebar";
 import Dashboard from "./Pages/Dashboard";
 import Users from "./Pages/Users";
 import Products from "./Pages/Products";
-// import { ProfileForm } from './components/ui/form'
 import Orders from "./Pages/Orders";
+import Shop from './Pages/Shop'
+import ProductDesc from './Pages/ProductDesc'
 
-// import Shop from './Pages/Shop'
-// import AdminPanel from './Pages/AdminPanel'
-import Shop from "./Pages/Shop";
 import { store } from "./redux/store";
 import Checkout from "./Pages/Checkout";
 import Collection from "./Pages/Collection";
@@ -34,6 +30,7 @@ const router = createBrowserRouter(
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/productdesc" element={<ProductDesc />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/collection" element={<Collection />} />
         {/* <Route path="/menu" element={<Menu />} />
