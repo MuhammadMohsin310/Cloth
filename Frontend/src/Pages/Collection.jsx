@@ -30,25 +30,27 @@ const Collection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(9);
+  const category = useSelector((state) => state.category.categories);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const category=useSelector((state)=>{state.category.categories})
+        console.log(category, "category");
+  
         const response = await axiosInstance.get(
-          `/products?page=${currentPage}&limit=${itemsPerPage}&category=${category}`
+            `/products?page=${currentPage}&limit=${itemsPerPage}&category=${category}`
         );
-        console.log(response.data); // ✅ Should show the full response now
+        console.log(response.data);
+  
         setProducts(response.data.products);
-        setTotalPages(response.data.totalPages ); 
-    console.log(totalPages)
-        //
+        setTotalPages(response.data.totalPages);
         toast.success("Collection loaded successfully!");
       } catch (error) {
         console.error("Failed to fetch products ❌", error);
       }
     };
+  
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, category]); 
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));

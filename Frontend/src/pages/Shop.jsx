@@ -26,7 +26,7 @@ const Shop = () => {
   const dispatch = useDispatch();
   const [Category, setCategory] = useState([
     { name: "Cloths", items: 5, img: "./men-sample.jpg" },
-    { name: "Shoes", items: 10, img: "./children-sample.jpg" },
+    { name: "shoes", items: 10, img: "./children-sample.jpg" },
     { name: "Accessories", items: 15, img: "./women-1.jpg" },
     { name: "Electronics", items: 20, img: "./men-sample.jpg" },
     { name: "Home Appliances", items: 25, img: "./children-sample.jpg" },
