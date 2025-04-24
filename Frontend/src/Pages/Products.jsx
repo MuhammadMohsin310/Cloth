@@ -1,4 +1,4 @@
-import React, { useState  } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset } from "@/components/ui/sidebar"
@@ -30,16 +30,22 @@ function Products() {
 
 
 
-  
-  const [products, setProducts] = useState([
-    {
-      id: '001',
-      name: 'Brown Jacket',
-      price: '2$',
-      description: 'A stylish brown jacket offering timeless appeal and cozy comfort for any season.',
-      category: 'Men'
-    }
-  ])
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    // Fetch products from the API when the component mounts
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get("/products/");
+        setProducts(response.data.products); // Assuming the response contains a products array
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const {
     register,
@@ -48,7 +54,7 @@ function Products() {
     formState: { errors }
   } = useForm()
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     const newProduct = {
       id: String(products.length + 1).padStart(3, '0'),
       ...data,
@@ -59,24 +65,24 @@ function Products() {
     reset()
 
 
- 
-      try {
-        const response = await axiosInstance.post("/products/", data);
-        const token = response.data.token;
-        if (token) {
-          Cookies.set("token", token, {
-            expires: 7, // Token expires in 7 days
-            secure: false, // Use true in production (HTTPS)
-            sameSite: "strict",
-          });
 
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        // Display error message to the user
-        alert("something went wrong");
+    try {
+      const response = await axiosInstance.post("/products/", data);
+      const token = response.data.token;
+      if (token) {
+        Cookies.set("token", token, {
+          expires: 7, // Token expires in 7 days
+          secure: false, // Use true in production (HTTPS)
+          sameSite: "strict",
+        });
+
       }
-    
+    } catch (error) {
+      console.error("Error:", error);
+      // Display error message to the user
+      alert("something went wrong");
+    }
+
 
 
 
@@ -165,7 +171,7 @@ function Products() {
             <TableCaption className="py-2">List of All Products.</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px] px-4 py-2 text-red-600">Id</TableHead>
+                <TableHead className="w-[100px] px-4 py-2 text-red-600">S.No</TableHead>
                 <TableHead className="px-4 py-2 text-red-600">Name</TableHead>
                 <TableHead className="px-4 py-2 text-red-600">Price</TableHead>
                 <TableHead className="px-4 py-2 text-red-600">Description</TableHead>
@@ -174,19 +180,19 @@ function Products() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {products.map((product) => (
+              {products.map((product, index) => (
                 <TableRow key={product.id}>
-                  <TableCell className="font-medium px-4 py-2">{product.id}</TableCell>
+                  <TableCell className="font-medium px-4 py-2">{index + 1}</TableCell>
                   <TableCell className="px-4 py-2">{product.name}</TableCell>
                   <TableCell className="px-4 py-2">{product.price}</TableCell>
-                  <TableCell className="px-4 py-2">{product.description}</TableCell>
+                  <TableCell className="px-4 py-2">{product.desc}</TableCell>
                   <TableCell className="px-4 py-2">{product.category}</TableCell>
                   <TableCell className="px-4 py-2">
                     <button
                       onClick={() => deleteProduct(product.id)}
                       className="bg-red-600 text-white px-2 py-1 rounded-md text-sm"
                     >
-                     <MdDelete /> 
+                      <MdDelete />
                     </button>
                   </TableCell>
                 </TableRow>
