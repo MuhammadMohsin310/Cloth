@@ -3,7 +3,7 @@ import Breadcrumbdemo from "../components/Breadcrumb";
 import { Card } from "@/components/ui/card";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "@/features/cart/cartSlice";
 import {
   Pagination,
@@ -33,8 +33,9 @@ const Collection = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        const category=useSelector((state)=>{state.category.categories})
         const response = await axiosInstance.get(
-          `/products?page=${currentPage}&limit=${itemsPerPage}`
+          `/products?page=${currentPage}&limit=${itemsPerPage}&category=${category}`
         );
         console.log(response.data); // ✅ Should show the full response now
         setProducts(response.data.products);
@@ -56,7 +57,7 @@ const Collection = () => {
   return (
     <>
       <section className="w-full   ">
-        <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
+      <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
           {/* Background Image */}
           <img
             src="./banner.jpg"
@@ -64,8 +65,9 @@ const Collection = () => {
             className="absolute inset-0 w-full h-full opacity-90"
             style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
           />
-          {/* <h1 className="relative text-white text-5xl font-bold bg-transparent"> Home</h1> */}
+          <h1 className="relative text-white text-4xl tracking-tighter font-bold bg-transparent">Click. Explore. Shop. Repeat.</h1>
         </div>
+
 
         {/* //SHOP SECTION */}
         <div className=" w-full mx-auto max-w-7xl  bg-gray-3 h-auto py-10  ">
