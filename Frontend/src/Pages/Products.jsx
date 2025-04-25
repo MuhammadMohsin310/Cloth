@@ -123,7 +123,7 @@ function Products() {
                       {...register("name", { required: "Product name is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+                    {/* {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>} */}
                   </div>
 
                   <div>
@@ -134,7 +134,7 @@ function Products() {
                       {...register("price", { required: "Price is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
+                    {/* {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>} */}
                   </div>
                   <div>
                     <label className="block mb-1 text-sm font-medium">Actual Price</label>
@@ -144,7 +144,7 @@ function Products() {
                       {...register("price", { required: "Actual Price is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.price && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>}
+                    {/* {errors.price && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>} */}
                   </div>
 
                   <div>

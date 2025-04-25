@@ -90,85 +90,88 @@ const Collection = () => {
         {/* <hr /> */}
         {/* Brands */}
         {/* Products */}
-        <div className="max-w-7xl mx-auto  h-auto pb-10 ">
-            <div><h1 className="font-bold text-3xl">Collection</h1></div>
-          <div className="grid lg:grid-cols-4 grid-cols-1 mx-10 gap-4 mt-10 ">
-            {products?.map((product) => (
-              <Card
-                key={product._id}
-                className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
-              >
-                <div
-                  className=" h-56 w-full flex justify-end p-2 bg-gray-300 overflow-hidden bg-center bg-cover"
-                  style={{
-                    backgroundImage: `url(./children-sample.jpg)`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <div>
-                    <button className="text-xs bg-green-200 p-[4px] rounded-lg">
-                      30% off
-                    </button>
-                  </div>
-                </div>
-                <div className="text-left px-3 flex flex-col gap-7">
-                  <div>
-                    <div className="text-lg font-semibold">{product.name}</div>
-                    <div className="text-xs text-gray-500">
-                      Product Description Will be here and it will be long
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-md  ">
-                      <span className="line-through decoration-red-500 text-red-800 text-xs">
-                        99$
-                      </span>{" "}
-                      <span className="font-bold text-xl">66$</span>
-                    </div>
-                    <div>
-                      <Button
-                        className=" text-white bg-black"
-                        onClick={() => handleAddToCart(product)}
+         <div className="max-w-7xl mx-auto  h-auto py-10">
+            <div><h1 className="font-bold lg:text-3xl text-xl    px-5">Collection</h1></div>
+                  <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mx-10 gap-4 mt-10 ">
+                    {products?.map((product) => (
+                      <Card
+                        key={product._id}
+                        className="bg-white shadow-md rounded-lg  mt-4 flex  lg:h-88 md:h-88 h-66 flex-col gap-7 "
                       >
-                        <FaCartArrowDown /> Add To Cart{" "}
-                      </Button>
-                    </div>
+                        <div
+                          className=" h-56 w-full flex justify-end p-2 bg-gray-300 overflow-hidden bg-center bg-cover"
+                          style={{
+                            backgroundImage: `url(./children-sample.jpg)`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        >
+                          <div>
+                            <button className="text-xs bg-green-200 p-[4px] rounded-lg">
+                              30% off
+                            </button>
+                          </div>
+                        </div>
+                        <div className="lg:text-left text-center px-3 flex flex-col lg:gap-7 gap-5  pb-3 ">
+                          <div>
+                            <div className="text-lg font-semibold">{product.name}</div>
+                            <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">{product.desc}</div>
+                          </div>
+                          <div className="flex justify-between lg:flex-row flex-col items-center">
+                            <div className="text-md  ">
+                              <span className="line-through decoration-red-500 text-red-800 text-xs">
+                                {product.price}$
+                              </span>{" "}
+                              <span className="font-bold text-xl">{product.actualprice}</span>
+                            </div>
+                            <div>
+                              <Button
+                                className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg"
+                                onClick={() => handleAddToCart(product)}
+                              >
+                                <FaCartArrowDown /> Add To Cart
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                  <div>
+                    <Pagination className="cursor-pointer my-5">
+                      <PaginationContent>
+                        <PaginationItem>
+                          <PaginationPrevious
+                            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                          >
+                            <span>Previous</span>
+                          </PaginationPrevious>
+                        </PaginationItem>
+        
+                        {[...Array(totalPages)].map((_, index) => (
+                          <PaginationItem key={index}>
+                            <PaginationLink
+                              isActive={currentPage === index + 1}
+                              onClick={() => setCurrentPage(index + 1)}
+                            >
+                              <span>{index + 1}</span>
+                            </PaginationLink>
+                          </PaginationItem>
+                        ))}
+        
+                        <PaginationItem>
+                          <PaginationNext
+                            onClick={() =>
+                              setCurrentPage((p) => Math.min(p + 1, totalPages))
+                            }
+                          >
+                            <span>Next</span>
+                          </PaginationNext>
+                        </PaginationItem>
+                      </PaginationContent>
+                    </Pagination>
                   </div>
                 </div>
-              </Card>
-            ))}
-          </div>
-          <div>
-            
-          <Pagination className="cursor-pointer my-5">
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}>
-        <span>Previous</span>
-      </PaginationPrevious>
-    </PaginationItem>
-
-    {[...Array(totalPages)].map((_, index) => (
-      <PaginationItem key={index}>
-        <PaginationLink
-          isActive={currentPage === index +1}
-          onClick={() => setCurrentPage(index +1)}
-        >
-          <span>{index + 1 }</span>
-        </PaginationLink>
-      </PaginationItem>
-    ))}
-
-    <PaginationItem>
-      <PaginationNext onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}>
-        <span>Next</span>
-      </PaginationNext>
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
-          </div>
-        </div>
         {/* Products */}
       </section>
     </>

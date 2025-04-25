@@ -93,7 +93,7 @@ const Shop = () => {
             <div>{/* <h1 className="text-2xl font-bold">Shop</h1> */}</div>
             <div></div>
           </div>
-          <div className="grid lg:grid-cols-5 md:grid sm:grid-cols-1 mx-10 gap-4 mt-10">
+          <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2  mx-10 gap-4 mt-10">
             {Category.map((item, index) => (
               <Link to="/collection">
                 {" "}
@@ -139,11 +139,11 @@ const Shop = () => {
         {/* Brands */}
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
-          <div className="grid lg:grid-cols-4 grid-cols-1 mx-10 gap-4 mt-10 ">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mx-10 gap-4 mt-10 ">
             {products?.map((product) => (
               <Card
                 key={product._id}
-                className="bg-white shadow-md rounded-lg  mt-4 flex  h-96 flex-col gap-7 "
+                className="bg-white shadow-md rounded-lg  mt-4 flex  lg:h-88 md:h-88 h-66 flex-col gap-7 "
               >
                 <div
                   className=" h-56 w-full flex justify-end p-2 bg-gray-300 overflow-hidden bg-center bg-cover"
@@ -159,12 +159,12 @@ const Shop = () => {
                     </button>
                   </div>
                 </div>
-                <div className="text-left px-3 flex flex-col gap-7">
+                <div className="lg:text-left text-center px-3 flex flex-col lg:gap-7 gap-5  pb-3 ">
                   <div>
                     <div className="text-lg font-semibold">{product.name}</div>
-                    <div className="text-xs text-gray-500">{product.desc}</div>
+                    <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">{product.desc}</div>
                   </div>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between lg:flex-row flex-col items-center">
                     <div className="text-md  ">
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
                         {product.price}$
@@ -173,10 +173,10 @@ const Shop = () => {
                     </div>
                     <div>
                       <Button
-                        className=" text-white bg-black"
+                        className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg"
                         onClick={() => handleAddToCart(product)}
                       >
-                        <FaCartArrowDown /> Add To Cart{" "}
+                        <FaCartArrowDown /> Add To Cart
                       </Button>
                     </div>
                   </div>
@@ -185,38 +185,80 @@ const Shop = () => {
             ))}
           </div>
           <div>
-            <Pagination className="cursor-pointer my-5">
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                  >
-                    <span>Previous</span>
-                  </PaginationPrevious>
-                </PaginationItem>
+          <Pagination className="cursor-pointer my-5">
+  <PaginationContent>
+    {/* Previous Button */}
+    <PaginationItem>
+      <PaginationPrevious
+        onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+      >
+        <span>Previous</span>
+      </PaginationPrevious>
+    </PaginationItem>
 
-                {[...Array(totalPages)].map((_, index) => (
-                  <PaginationItem key={index}>
-                    <PaginationLink
-                      isActive={currentPage === index + 1}
-                      onClick={() => setCurrentPage(index + 1)}
-                    >
-                      <span>{index + 1}</span>
-                    </PaginationLink>
-                  </PaginationItem>
-                ))}
+    {/* First Page */}
+    <PaginationItem>
+      <PaginationLink
+        isActive={currentPage === 1}
+        onClick={() => setCurrentPage(1)}
+      >
+        <span>1</span>
+      </PaginationLink>
+    </PaginationItem>
 
-                <PaginationItem>
-                  <PaginationNext
-                    onClick={() =>
-                      setCurrentPage((p) => Math.min(p + 1, totalPages))
-                    }
-                  >
-                    <span>Next</span>
-                  </PaginationNext>
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
+    {/* Dots before current if needed */}
+    {currentPage > 3 && (
+      <PaginationItem>
+        <span className="px-2">...</span>
+      </PaginationItem>
+    )}
+
+    {/* Current, previous, next */}
+    {[currentPage - 1, currentPage, currentPage + 1].map((page) => {
+      if (page > 1 && page < totalPages) {
+        return (
+          <PaginationItem key={page}>
+            <PaginationLink
+              isActive={currentPage === page}
+              onClick={() => setCurrentPage(page)}
+            >
+              <span>{page}</span>
+            </PaginationLink>
+          </PaginationItem>
+        );
+      }
+      return null;
+    })}
+
+    {/* Dots after current if needed */}
+    {currentPage < totalPages - 2 && (
+      <PaginationItem>
+        <span className="px-2">...</span>
+      </PaginationItem>
+    )}
+
+    {/* Last Page */}
+    {totalPages > 1 && (
+      <PaginationItem>
+        <PaginationLink
+          isActive={currentPage === totalPages}
+          onClick={() => setCurrentPage(totalPages)}
+        >
+          <span>{totalPages}</span>
+        </PaginationLink>
+      </PaginationItem>
+    )}
+
+    {/* Next Button */}
+    <PaginationItem>
+      <PaginationNext
+        onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+      >
+        <span>Next</span>
+      </PaginationNext>
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
           </div>
         </div>
         {/* Products */}
