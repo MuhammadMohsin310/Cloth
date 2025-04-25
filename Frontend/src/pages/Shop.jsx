@@ -38,19 +38,12 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-      
         const response = await axiosInstance.get(
           `/products?page=${currentPage}&limit=${itemsPerPage}`
         );
-        console.log(response.data,"producta"); // ✅ Should show the full response now
+
         setProducts(response.data.products);
         setTotalPages(response.data.totalPages);
-        console.log(totalPages);
-
-        setTotalPages(response.data.totalPages ); 
-    console.log(totalPages)
-        //
-        toast.success("Products loaded successfully!");
       } catch (error) {
         console.error("Failed to fetch products ❌", error);
       }
@@ -63,12 +56,10 @@ const Shop = () => {
   };
   const handleCategory = (e, item) => {
     e.preventDefault(); // Prevent default link behavior
-    dispatch(deleteCategory(item))
+    dispatch(deleteCategory(item));
     navigate("/collection"); // Navigate to the collection page
-    // Prevent default link behavior
-    console.log("Category clicked:", item.name);
+
     dispatch(addCategory(item.name)); // Dispatch the category to the Redux store
-    // You can add more logic here if needed, like navigating to a specific category page
   };
 
   return (
@@ -144,6 +135,9 @@ const Shop = () => {
               <Card
                 key={product._id}
                 className="bg-white shadow-md rounded-lg  mt-4 flex  lg:h-88 md:h-88 h-66 flex-col gap-7 "
+                onClick={() => {
+                  console.log(product._id);
+                }}
               >
                 <div
                   className=" h-56 w-full flex justify-end p-2 bg-gray-300 overflow-hidden bg-center bg-cover"
@@ -162,19 +156,27 @@ const Shop = () => {
                 <div className="lg:text-left text-center px-3 flex flex-col lg:gap-7 gap-5  pb-3 ">
                   <div>
                     <div className="text-lg font-semibold">{product.name}</div>
-                    <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">{product.desc}</div>
+                    <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
+                      {product.desc}
+                    </div>
                   </div>
                   <div className="flex justify-between lg:flex-row flex-col items-center">
                     <div className="text-md  ">
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
                         {product.price}$
                       </span>{" "}
-                      <span className="font-bold text-xl">{product.actualprice}</span>
+                      <span className="font-bold text-xl">
+                        {product.actualprice}
+                      </span>
                     </div>
                     <div>
                       <Button
                         className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg"
-                        onClick={() => handleAddToCart(product)}
+                        // onClick={() => handleAddToCart(product)}
+                        onClick={() => {
+                          console.log("Trying to add", product._id);
+                          dispatch(addToCart(product));
+                        }}
                       >
                         <FaCartArrowDown /> Add To Cart
                       </Button>
@@ -185,80 +187,82 @@ const Shop = () => {
             ))}
           </div>
           <div>
-          <Pagination className="cursor-pointer my-5">
-  <PaginationContent>
-    {/* Previous Button */}
-    <PaginationItem>
-      <PaginationPrevious
-        onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-      >
-        <span>Previous</span>
-      </PaginationPrevious>
-    </PaginationItem>
+            <Pagination className="cursor-pointer my-5">
+              <PaginationContent>
+                {/* Previous Button */}
+                <PaginationItem>
+                  <PaginationPrevious
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                  >
+                    <span>Previous</span>
+                  </PaginationPrevious>
+                </PaginationItem>
 
-    {/* First Page */}
-    <PaginationItem>
-      <PaginationLink
-        isActive={currentPage === 1}
-        onClick={() => setCurrentPage(1)}
-      >
-        <span>1</span>
-      </PaginationLink>
-    </PaginationItem>
+                {/* First Page */}
+                <PaginationItem>
+                  <PaginationLink
+                    isActive={currentPage === 1}
+                    onClick={() => setCurrentPage(1)}
+                  >
+                    <span>1</span>
+                  </PaginationLink>
+                </PaginationItem>
 
-    {/* Dots before current if needed */}
-    {currentPage > 3 && (
-      <PaginationItem>
-        <span className="px-2">...</span>
-      </PaginationItem>
-    )}
+                {/* Dots before current if needed */}
+                {currentPage > 3 && (
+                  <PaginationItem>
+                    <span className="px-2">...</span>
+                  </PaginationItem>
+                )}
 
-    {/* Current, previous, next */}
-    {[currentPage - 1, currentPage, currentPage + 1].map((page) => {
-      if (page > 1 && page < totalPages) {
-        return (
-          <PaginationItem key={page}>
-            <PaginationLink
-              isActive={currentPage === page}
-              onClick={() => setCurrentPage(page)}
-            >
-              <span>{page}</span>
-            </PaginationLink>
-          </PaginationItem>
-        );
-      }
-      return null;
-    })}
+                {/* Current, previous, next */}
+                {[currentPage - 1, currentPage, currentPage + 1].map((page) => {
+                  if (page > 1 && page < totalPages) {
+                    return (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          isActive={currentPage === page}
+                          onClick={() => setCurrentPage(page)}
+                        >
+                          <span>{page}</span>
+                        </PaginationLink>
+                      </PaginationItem>
+                    );
+                  }
+                  return null;
+                })}
 
-    {/* Dots after current if needed */}
-    {currentPage < totalPages - 2 && (
-      <PaginationItem>
-        <span className="px-2">...</span>
-      </PaginationItem>
-    )}
+                {/* Dots after current if needed */}
+                {currentPage < totalPages - 2 && (
+                  <PaginationItem>
+                    <span className="px-2">...</span>
+                  </PaginationItem>
+                )}
 
-    {/* Last Page */}
-    {totalPages > 1 && (
-      <PaginationItem>
-        <PaginationLink
-          isActive={currentPage === totalPages}
-          onClick={() => setCurrentPage(totalPages)}
-        >
-          <span>{totalPages}</span>
-        </PaginationLink>
-      </PaginationItem>
-    )}
+                {/* Last Page */}
+                {totalPages > 1 && (
+                  <PaginationItem>
+                    <PaginationLink
+                      isActive={currentPage === totalPages}
+                      onClick={() => setCurrentPage(totalPages)}
+                    >
+                      <span>{totalPages}</span>
+                    </PaginationLink>
+                  </PaginationItem>
+                )}
 
-    {/* Next Button */}
-    <PaginationItem>
-      <PaginationNext
-        onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-      >
-        <span>Next</span>
-      </PaginationNext>
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
+                {/* Next Button */}
+                <PaginationItem>
+                  <PaginationNext
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(p + 1, totalPages))
+                    }
+                  >
+                    <span>Next</span>
+                  </PaginationNext>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </div>
         {/* Products */}

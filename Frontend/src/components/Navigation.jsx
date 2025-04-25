@@ -178,9 +178,10 @@ const Navbar = () => {
                                 +
                               </button>
                               <button
-                                onClick={() => {
-                                  dispatch(removeFromCart(item));
-                                }}
+                                 onClick={() => {
+                                                         console.log("Trying to add", product._id);
+                                                         dispatch(deleteFromCart(product));
+                                                       }}
                                 className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600"
                               >
                                 -
