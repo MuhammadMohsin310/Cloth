@@ -131,6 +131,7 @@ function Products() {
                       className="w-full px-3 py-2 border rounded-md"
                     />
                     {/* {errors.actualprice && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>} */}
+                    {/* {errors.price && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>} */}
                   </div>
 
                   <div>

@@ -10,33 +10,36 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+ 
     addToCart: (state, action) => {
-      const item = action.payload
-      const existing = state.cartItems.find(p => p.id === item.id)
-
+      const item = action.payload;
+      console.log('Adding to cart:', item);
+      const existing = state.cartItems.find(p => p._id === item._id); // ✅ FIXED
+    
       if (existing) {
-        existing.quantity += 1
+        existing.quantity += 1;
       } else {
-        state.cartItems.push({ ...item, quantity: 1 })
+        state.cartItems.push({ ...item, quantity: 1 });
       }
-
-      // Save to localStorage
-      setToLocalStorage('cartItems', state.cartItems)
+    
+      setToLocalStorage('cartItems', state.cartItems);
     },
 
     deleteFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter(p => p.id !== action.payload.id)
-      setToLocalStorage('cartItems', state.cartItems)
+      const itemId = action.payload._id; // ✅ use _id
+      state.cartItems = state.cartItems.filter(p => p._id !== itemId);
+      setToLocalStorage('cartItems', state.cartItems);
     },
+    
     removeFromCart: (state, action) => {
-      const itemId = action.payload.id;
-      const item = state.cartItems.find(p => p.id === itemId);
+      const itemId = action.payload._id; // ✅ use _id
+      const item = state.cartItems.find(p => p._id === itemId);
     
       if (item) {
         if (item.quantity > 1) {
           item.quantity -= 1;
         } else {
-          state.cartItems = state.cartItems.filter(p => p.id !== itemId);
+          state.cartItems = state.cartItems.filter(p => p._id !== itemId);
         }
         setToLocalStorage('cartItems', state.cartItems);
       }

@@ -28,6 +28,7 @@ const Checkout = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver:zodResolver(checkoutSchema)
@@ -42,6 +43,7 @@ const Checkout = () => {
       const response = await axios.post("/order", payload);
       console.log("Contact Done:",data);
       toast.success(" Order placedsuccessfully!");
+      reset()
      
     } catch (error) {
       
@@ -53,16 +55,16 @@ const Checkout = () => {
   return (
     <>
       <section className=" min-h-screen  ">
-        <div className="grid grid-cols-2 ">
-          <div className="left bg-white flex-col overflow-y-auto  gap-3 h-auto flex lg:px-16 px-5 lg:tracking-normal tracking-tighter lg:text-base text-sm py-10 ">
-            <section className="min-h-screen py-10 px-5 lg:px-32 ">
+        <div className="grid lg:grid-cols-2 grid-cols-1 lg:my-0 mb-5  ">
+          <div className="left lg:bg-white bg-none flex-col overflow-y-auto  gap-3 h-auto flex lg:px-16 px-5 lg:tracking-normal tracking-tighter lg:text-base text-sm lg:py-10 py-0 ">
+            <section className=" lg:min-h-screen h-auto lg:py-10 py-2 px-5 lg:px-32 ">
               <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
                 <h2 className="text-2xl font-semibold mb-6 text-center">
                   Checkout
                 </h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="lg:space-y-6 space-y-2">
                   <div>
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label className="lg:text-base text-md " htmlFor="name">Full Name</Label>
                     <input
                      
                       className="mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
@@ -140,12 +142,12 @@ const Checkout = () => {
             </section>
           </div>
 
-          <div className="right  px-5 lg:px-40 mt-10  ">
+          <div className="right  px-10 lg:px-40 mt-10  ">
             <div>
-              <h1 className="font-semibold ">Shopping Cart</h1>
+              <h1 className="font-semibold  lg:text-left text-center ">Shopping Cart</h1>
             </div>
-            <div>
-              <Card className="mt-10    h-auto py-1 ">
+            <div className="">
+              <Card className="lg:mt-10 mt-3    h-auto py-1 ">
                 <div className=" w-auto  my-10 mx-5">
                   {/* Upper Content */}
                   <div className="flex lg:flex-row flex-col justify-between  border-black pb-2 ">
