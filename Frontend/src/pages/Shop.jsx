@@ -74,7 +74,7 @@ const Shop = () => {
             className="absolute inset-0 w-full h-full opacity-90"
             style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
           />
-          <h1 className="relative text-white text-4xl tracking-tighter font-bold bg-transparent">
+          <h1 className="relative text-white tracking-tighter lg:text-4xl md:text-4xl text-xl font-bold bg-transparent">
             Your Favorites, Organized – Browse by What Matters
           </h1>
         </div>
@@ -85,14 +85,14 @@ const Shop = () => {
             <div>{/* <h1 className="text-2xl font-bold">Shop</h1> */}</div>
             <div></div>
           </div>
-          <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2  mx-10 gap-4 mt-10">
+          <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2   mx-10 gap-4 mt-10">
             {Category.map((item, index) => (
               <Link to="/collection">
                 {" "}
                 <Card
                   onClick={(e) => handleCategory(e, item)}
                   key={index}
-                  className="bg-white shadow-md rounded-lg p-4 mt-4 flex justify-center items-center h-96 flex-col"
+                  className="bg-white shadow-md rounded-lg p-4 mt-4 flex justify-center items-center lg:h-96 md:h-96 h-70 flex-col"
                   style={{
                     backgroundImage: `url(${item.img})`,
                     backgroundSize: "cover",
@@ -121,7 +121,7 @@ const Shop = () => {
             className="absolute inset-0 w-full h-full opacity-90"
             style={{ objectFit: "cover", backgroundRepeat: "repeat" }}
           />
-          <h1 className="relative text-white tracking-tighter text-4xl font-bold bg-transparent">
+          <h1 className="px-1 relative text-white tracking-tighter lg:text-4xl md:text-4xl text-xl font-bold bg-transparent">
             {" "}
             Save Big Today – Up to 50% Off Sitewide!
           </h1>
@@ -131,7 +131,7 @@ const Shop = () => {
         {/* Brands */}
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mx-10 gap-4 mt-10 ">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1  mx-10 gap-4 mt-10 ">
             {products?.map((product) => (
               <Card
                 key={product._id}
@@ -154,33 +154,35 @@ const Shop = () => {
                     </button>
                   </div>
                 </div>
-                <div className="lg:text-left text-center px-3 flex flex-col lg:gap-7 gap-5  pb-3 ">
+                <div className="lg:text-left  px-3 flex flex-col  lg:gap-7 gap-5  pb-3 ">
                   <div>
-                    <div className="text-lg font-semibold">{product.name}</div>
-                    <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
+                    <div className="text-md font-semibold">{product.name}</div>
+                    <div className="line-clamp-2 text-sm text-gray-500 overflow-hidden text-ellipsis">
                       {product.desc}
                     </div>
                   </div>
-                  <div className="flex justify-between lg:flex-row flex-col items-center">
-                    <div className="text-md  ">
+                  <div className="flex justify-between lg:flex-row  items-center">
+
+                    <div className="text-md ">
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
-                        {product.price}$
+                      ${product.price}
                       </span>{" "}
-                      <span className="font-bold text-xl">
-                        {product.actualprice}
+                      <span className="font-bold text-lg ">
+                      ${product.actualprice}
                         
                       </span>
                     </div>
                     <div>
                       <Button
-                        className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg"
+                        className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg md:rounded-lg "
                         // onClick={() => handleAddToCart(product)}
                         onClick={() => {
                           console.log("Trying to add", product._id);
                           dispatch(addToCart(product));
                         }}
                       >
-                        <FaCartArrowDown /> Add To Cart
+                        <FaCartArrowDown />
+                        <span className="ml-2 hidden sm:inline">Add To Cart</span>
                       </Button>
                     </div>
                   </div>
