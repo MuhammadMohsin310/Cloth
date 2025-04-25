@@ -43,6 +43,7 @@ const Shop = () => {
         );
 
         setProducts(response.data.products);
+        console.log(response.data.products, "products");
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Failed to fetch products ❌", error);
@@ -167,6 +168,7 @@ const Shop = () => {
                       </span>{" "}
                       <span className="font-bold text-xl">
                         {product.actualprice}
+                        
                       </span>
                     </div>
                     <div>

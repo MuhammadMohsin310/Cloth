@@ -26,18 +26,20 @@ const cartSlice = createSlice({
     },
 
     deleteFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter(p => p.id !== action.payload.id)
-      setToLocalStorage('cartItems', state.cartItems)
+      const itemId = action.payload._id; // ✅ use _id
+      state.cartItems = state.cartItems.filter(p => p._id !== itemId);
+      setToLocalStorage('cartItems', state.cartItems);
     },
+    
     removeFromCart: (state, action) => {
-      const itemId = action.payload.id;
+      const itemId = action.payload._id; // ✅ use _id
       const item = state.cartItems.find(p => p._id === itemId);
     
       if (item) {
         if (item.quantity > 1) {
           item.quantity -= 1;
         } else {
-          state.cartItems = state.cartItems.filter(p => p.id !== itemId);
+          state.cartItems = state.cartItems.filter(p => p._id !== itemId);
         }
         setToLocalStorage('cartItems', state.cartItems);
       }
