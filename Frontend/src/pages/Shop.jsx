@@ -46,7 +46,7 @@ const Shop = () => {
         console.log(response.data.products, "products");
         setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.error("Failed to fetch products ❌", error);
+ 
       }
     };
     fetchProducts();
