@@ -93,7 +93,7 @@ const Shop = () => {
             <div>{/* <h1 className="text-2xl font-bold">Shop</h1> */}</div>
             <div></div>
           </div>
-          <div className="grid lg:grid-cols-5 grid-cols-1 mx-10 gap-4 mt-10">
+          <div className="grid lg:grid-cols-5 md:grid sm:grid-cols-1 mx-10 gap-4 mt-10">
             {Category.map((item, index) => (
               <Link to="/collection">
                 {" "}
