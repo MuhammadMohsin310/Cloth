@@ -25,7 +25,7 @@ const Contact = () => {
     <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h1 className="relative text-white text-4xl tracking-tighter font-bold bg-transparent"> Let’s Connect – Your Feedback Is Important to Us!</h1>
+  <h1 className="relative text-white tracking-tighter lg:text-4xl md:text-4xl text-xl font-bold bg-transparent"> Let’s Connect – Your Feedback Is Important to Us!</h1>
 </div>
 
 

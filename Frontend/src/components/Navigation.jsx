@@ -72,7 +72,8 @@ const Navbar = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className="text-black text-3xl font-bold">Store Name</h1>
+          <h1 className="text-black lg:text-3xl md:text-3xl text-lg font-bold ">Store Name</h1>
+
           </Link>
 
           {/* Mobile Menu Button (Hamburger Icon) */}
@@ -289,13 +290,19 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
+           
+
           <div className="lg:hidden bg-white shadow-md mt-2 rounded-md absolute w-full left-0">
+           
+           
+
             <ul className="flex flex-col text-center py-2">
               <li className="py-2 border-b">
                 <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
                   Home
                 </NavLink>
               </li>
+              
               <li className="py-2 border-b">
                 <NavLink to="/shop" onClick={() => setIsMenuOpen(false)}>
                   Shop

@@ -17,7 +17,7 @@ function Home() {
 <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./banner.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h2 className=" relative text-white text-4xl tracking-tighter font-bold bg-transparent"> Shop Smart. Live Better. Style Delivered to Your Door</h2>
+  <h2 className="relative text-white lg:text-4xl md:text-4xl text-xl tracking-tighter font-bold bg-transparent "> Shop Smart. Live Better. Style Delivered to Your Door</h2>
 </div>
 
 
@@ -28,7 +28,7 @@ function Home() {
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Customer Favorites</h3>
             <h1 className='text-center pb-10 text-2xl md:text-4xl font-bold mt-5'>Our Collections</h1>
             <div className=''>
-              <Link to={'menu'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
+              <Link to={'shop'} className='flex flex-wrap justify-center md:justify-start gap-6 mt-5'>
               {[
                 { name: 'Men', img: './men-1.jpg' },
                 { name: 'Women',  img: './women.jpg'  },
@@ -146,7 +146,7 @@ function Home() {
  <div className="relative h-64 flex justify-center items-center text-center bg-black tracking-widest">
   {/* Background Image */}
   <img src="./women.jpg" alt="Background" className="absolute inset-0 w-full h-full opacity-90" style={{ objectFit: 'cover', backgroundRepeat: 'repeat' }} />
-  <h1 className="relative text-white tracking-tighter text-4xl font-bold bg-transparent"> Save Big Today – Up to 50% Off Sitewide!</h1>
+  <h1 className="relative text-white tracking-tighter lg:text-4xl md:text-4xl text-xl font-bold bg-transparent"> Save Big Today – Up to 50% Off Sitewide!</h1>
 </div>
  
 
