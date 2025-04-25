@@ -45,8 +45,9 @@ const Shop = () => {
         setProducts(response.data.products);
         console.log(response.data.products, "products");
         setTotalPages(response.data.totalPages);
+        toast.success("products loaded successfully!");
       } catch (error) {
- 
+ toast.error("Failed to fetch products ❌", error);
       }
     };
     fetchProducts();
