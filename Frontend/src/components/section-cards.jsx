@@ -9,14 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function SectionCards() {
+export function SectionCards( { productCount }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 lg:px-6 items-center">
     <Card className="@container/card h-full">
       <CardHeader className="relative">
         <CardDescription>Total Products</CardDescription>
         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-          521
+        {productCount}
         </CardTitle>
         <div className="absolute right-4 top-4">
           <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">

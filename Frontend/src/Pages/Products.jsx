@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset } from "@/components/ui/sidebar"
 import { MdDelete } from "react-icons/md";
-import axios from 'axios';
+import axiosInstance from '@/services/axiosInstance';
 
 import {
   Table,
@@ -23,22 +23,19 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import axiosInstance from '@/services/axiosInstance';
+import { toast } from 'react-toastify';
 
 function Products() {
   const [showForm, setShowForm] = useState(false)
-
-
-
-
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    // Fetch products from the API when the component mounts
     const fetchProducts = async () => {
       try {
-        const response = await axiosInstance.get("/products/");
-        setProducts(response.data.products); // Assuming the response contains a products array
+        const response = await axiosInstance.get("/products");
+        console.log(response.data)
+        setProducts(response.data.products);
+        toast.success("productss loaded")
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -55,46 +52,35 @@ function Products() {
   } = useForm()
 
   const onSubmit = async (data) => {
-    const newProduct = {
-      id: String(products.length + 1).padStart(3, '0'),
-      ...data,
-      price: `$${data.price}`
-    }
-    setProducts([...products, newProduct])
-    setShowForm(false)
-    reset()
-
-
-
     try {
       const response = await axiosInstance.post("/products/", data);
-      const token = response.data.token;
-      if (token) {
-        Cookies.set("token", token, {
-          expires: 7, // Token expires in 7 days
-          secure: false, // Use true in production (HTTPS)
-          sameSite: "strict",
-        });
+      const savedProduct = response.data;
 
-      }
+      setProducts([...products, savedProduct]);
+      setShowForm(false);
+      reset();
     } catch (error) {
       console.error("Error:", error);
-      // Display error message to the user
-      alert("something went wrong");
+      alert("Something went wrong");
     }
-
-
-
-
-
-
-
   }
 
-  const deleteProduct = (id) => {
-    const filtered = products.filter(product => product.id !== id)
-    setProducts(filtered)
-  }
+
+
+
+  const deleteProduct = async (id) => {
+    try {
+      await axiosInstance.delete(`/products/${id}`);
+      const filtered = products.filter(product => product._id !== id);
+      setProducts(filtered);
+    } catch (error) {
+      console.error("Failed to delete product:", error);
+      alert("Failed to delete product. Please try again.");
+    }
+  };
+
+
+
 
   return (
     <>
@@ -102,14 +88,13 @@ function Products() {
         <SidebarInset>
           <SiteHeader title="Your Products" />
 
-          {/* Add Product Button Top-Right */}
           <div className="flex justify-end px-6 pt-4">
             <Dialog open={showForm} onOpenChange={setShowForm}>
               <DialogTrigger asChild>
                 <button className="bg-slate-700 text-white p-2 rounded-md">+ Add Product</button>
               </DialogTrigger>
 
-              <DialogContent className="bg-white border-none  ">
+              <DialogContent className="bg-white border-none">
                 <DialogHeader>
                   <DialogTitle>Add New Product</DialogTitle>
                   <DialogDescription>Fill in the details to create a new product.</DialogDescription>
@@ -123,7 +108,7 @@ function Products() {
                       {...register("name", { required: "Product name is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+                    {/* {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>} */}
                   </div>
 
                   <div>
@@ -134,17 +119,18 @@ function Products() {
                       {...register("price", { required: "Price is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>}
+                    {/* {errors.price && <p className="text-red-500 text-sm">{errors.price.message}</p>} */}
                   </div>
+
                   <div>
                     <label className="block mb-1 text-sm font-medium">Actual Price</label>
                     <input
                       type="number"
                       step="0.01"
-                      {...register("price", { required: "Actual Price is required" })}
+                      {...register("actualprice", { required: "Actual Price is required" })}
                       className="w-full px-3 py-2 border rounded-md"
                     />
-                    {errors.price && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>}
+                    {/* {errors.actualprice && <p className="text-red-500 text-sm">{errors.actualprice.message}</p>} */}
                   </div>
 
                   <div>
@@ -165,7 +151,7 @@ function Products() {
                   </div>
 
                   <div className="flex justify-end">
-                    <button onSubmit={handleSubmit(onSubmit)} type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md">
+                    <button type="submit" className="bg-black text-white px-4 py-2 rounded-md">
                       Submit
                     </button>
                   </div>
@@ -175,7 +161,6 @@ function Products() {
           </div>
         </SidebarInset>
 
-        {/* Products Table */}
         <div className="px-6 mt-6">
           <Table className="bg-white rounded-md w-full">
             <TableCaption className="py-2">List of All Products.</TableCaption>
@@ -191,7 +176,7 @@ function Products() {
             </TableHeader>
             <TableBody>
               {products.map((product, index) => (
-                <TableRow key={product.id}>
+                <TableRow key={product._id}>
                   <TableCell className="font-medium px-4 py-2">{index + 1}</TableCell>
                   <TableCell className="px-4 py-2">{product.name}</TableCell>
                   <TableCell className="px-4 py-2">{product.price}</TableCell>
@@ -199,7 +184,7 @@ function Products() {
                   <TableCell className="px-4 py-2">{product.category}</TableCell>
                   <TableCell className="px-4 py-2">
                     <button
-                      onClick={() => deleteProduct(product.id)}
+                      onClick={() => deleteProduct(product._id)}
                       className="bg-red-600 text-white px-2 py-1 rounded-md text-sm"
                     >
                       <MdDelete />
