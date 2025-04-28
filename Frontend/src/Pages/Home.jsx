@@ -71,7 +71,7 @@ function Home() {
       <p className='text-center'>Problems trying to resolve the conflict between</p>
       
       <Link to={'menu'}>
-        <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-full mx-auto md:justify-start gap-10 mt-10 lg:px-0 px-8'>
+        <div className='flex lg:flex-nowrap md:flex-nowrap flex-wrap w-full mx-auto md:justify-start gap-10 mt-10 lg:px-0 px-8'>
           {[
             {
               desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
@@ -113,7 +113,7 @@ function Home() {
               </div>
 
               <div className='flex-1 px-6 pt-4'>
-                <p className='text-sm md:text-base'>{dish.desc}</p>
+                <p className='text-sm md:text-base lg:line-clamp-none md:line-clamp-4 line-clamp-2 '>{dish.desc}</p>
               </div>
 
               <div className='flex items-center justify-between w-full px-6 pb-4 pt-2 mt-auto'>
