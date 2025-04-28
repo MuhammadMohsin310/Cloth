@@ -70,6 +70,7 @@ function Products() {
 
   const deleteProduct = async (id) => {
     try {
+      console.log(id)
       await axiosInstance.delete(`/products/${id}`);
       const filtered = products.filter(product => product._id !== id);
       setProducts(filtered);

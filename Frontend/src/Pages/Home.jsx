@@ -175,9 +175,10 @@ function Home() {
       We know how large objects will act, but things on a small scale.
     </p>
     <div className="flex justify-center md:justify-start space-x-4 pt-6">
-      <button className="bg-black text-white px-5 py-2 rounded-md text-sm hover:cursor-pointer">
+    <Link to="/shop"> <button className="bg-black text-white px-5 py-2 rounded-md text-sm hover:cursor-pointer">
         Buy Now
       </button>
+      </Link> 
       <button className="border border-slate-300 text-black hover:bg-green-100  px-5 py-2 rounded-md text-sm">
         Read More
       </button>
