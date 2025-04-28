@@ -53,6 +53,10 @@ const Shop = () => {
     fetchProducts();
   }, [currentPage]);
 
+
+  
+
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
