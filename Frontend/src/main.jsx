@@ -8,20 +8,20 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Provider } from "react-redux";
 
-import Contact from "./pages/contact";
 import LayoutSidebar from "./components/LayoutSidebar";
 import Dashboard from "./pages/dashboard";
 import Users from "./pages/users";
 import Products from "./pages/products";
 import Orders from "./pages/orders";
-import Shop from './pages/shop'
-import ProductDesc from './pages/productDesc'
+import Shop from "./pages/shop";
+import ProductDesc from "./pages/productDesc";
 
 import { store } from "./redux/store";
 import Checkout from "./pages/checkout";
 import Collection from "./pages/collection";
 import Home from "./pages/home";
 import About from "./pages/about";
+import Contact from "./pages/contact";
 // Define router
 const router = createBrowserRouter(
   createRoutesFromElements(
