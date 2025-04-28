@@ -7,7 +7,7 @@ import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./pages/About";
 import { Provider } from "react-redux";
-import Home from "./pages/Home";
+
 import Contact from "./pages/Contact";
 import LayoutSidebar from "./components/LayoutSidebar";
 import Dashboard from "./Pages/Dashboard";
@@ -20,6 +20,7 @@ import ProductDesc from './Pages/ProductDesc'
 import { store } from "./redux/store";
 import Checkout from "./Pages/Checkout";
 import Collection from "./Pages/Collection";
+import Home from "./Pages/Home";
 
 // Define router
 const router = createBrowserRouter(
