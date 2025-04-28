@@ -1,11 +1,13 @@
-import React from 'react'
+
+import React, { useEffect, useState } from 'react';
 import { AppSidebar } from "@/components/app-sidebar"
 // import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 // import { DataTable } from "@/components/data-table"
 import { SectionCards } from "@/components/section-cards"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { Outlet } from 'react-router-dom'
+import axiosInstance from '@/services/axiosInstance';
+
 
 import {
   Table,
@@ -20,6 +22,28 @@ import {
 
 
 function Users() {
+
+
+
+
+  const [users, setUsers] = useState([]);
+
+  // Fetch users from backend on component mount
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axiosInstance.get("/auth/users"); 
+        console.log(response.data)
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+
   return (
     < >
 
@@ -51,7 +75,7 @@ function Users() {
     <TableBody>
       <TableRow>
         <TableCell className="font-medium px-4 py-2">User_id</TableCell>
-        <TableCell className="px-4 py-2">Aarij</TableCell>
+        <TableCell className="px-4 py-2">{users.username}</TableCell>
         <TableCell className="px-4 py-2">1482 Oakridge Avenue Springfield, United States</TableCell>
         <TableCell className="text-right px-4 py-2">aarijhere@gmail.com</TableCell>
       </TableRow>
