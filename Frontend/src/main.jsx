@@ -5,22 +5,22 @@ import "./index.css";
 import { createRoutesFromElements, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./pages/About";
+import About from "./pages/about";
 import { Provider } from "react-redux";
 
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 import LayoutSidebar from "./components/LayoutSidebar";
-import Dashboard from "./pages/Dashboard";
-import Users from "./pages/Users";
-import Products from "./pages/Products";
-import Orders from "./pages/Orders";
-import Shop from './pages/Shop'
-import ProductDesc from './pages/ProductDesc'
+import Dashboard from "./pages/dashboard";
+import Users from "./pages/users";
+import Products from "./pages/products";
+import Orders from "./pages/orders";
+import Shop from './pages/shop'
+import ProductDesc from './pages/productDesc'
 
 import { store } from "./redux/store";
-import Checkout from "./pages/Checkout";
-import Collection from "./pages/Collection";
-import Home from "./pages/Home";
+import Checkout from "./pages/checkout";
+import Collection from "./pages/collection";
+import Home from "./pages/home";
 
 // Define router
 const router = createBrowserRouter(
