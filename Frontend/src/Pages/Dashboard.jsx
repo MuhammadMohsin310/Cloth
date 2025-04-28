@@ -27,7 +27,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axiosInstance.get('/Checkout') // Adjust endpoint if needed
+        const response = await axiosInstance.get('/auth/users') // Adjust endpoint if needed
         setUserCount(response.data.length) // Assuming response contains the users' array
       } catch (error) {
         console.error("Failed to fetch user count", error)
@@ -36,6 +36,21 @@ function Dashboard() {
 
     fetchUserCount()
   }, [])
+
+  useEffect(() => {
+    const fetchOrderCount = async () => {
+      try {
+        const response = await axiosInstance.get('/Checkout') // Adjust endpoint if needed
+        setorderCount(response.data.length) // Assuming response contains the orders' array
+      } catch (error) {
+        console.error("Failed to fetch order count", error)
+      }
+    }
+
+    fetchOrderCount()
+  }, [])
+
+
 
   return (
     <div>
