@@ -63,77 +63,77 @@ function Home() {
 
 
      {/*Dishes Section */}
-     <div className=' p-10 md:p-20 sm:p-10 w-full mx-auto'>
-        <div className=' flex flex-col md:flex-row items-center mx-5 md:mx-10 w-full mx-auto'> 
-          <div className='max-w-7xl mx-auto flex flex-col md:w-full justify-center text-center md:text-left'>
-            <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Featured Products</h3>
-            <h1 className='text-center text-2xl md:text-4xl font-bold mt-5'>Best Seller Product</h1>
-            <p  className='text-center'>Problems trying to resolve the conflict between </p>
-            <Link to={'menu'}>
-            <div className='grid grid-cols-4 max-w-7xl mx-auto j md:justify-start gap-4 mt-10'>
-  {[
-    {
-      desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
-      price: 24,
-      rating: 4.2,
-      img: './men-sample.jpg',
-    },
-    {
-      desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
-      price: 27,
-      rating: 4.9,
-      img: './women.jpg',
-    },
-    {
-      desc: 'Elegant flow meets everyday ease. This maxi dress drapes beautifully and moves with you — perfect for brunch dates, beach walks, or just turning heads wherever you go.',
-      price: 17,
-      rating: 4.9,
-      img: './children-sample.jpg',
-    },
-    {
-      desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
-      price: 31,
-      rating: 4.5,
-      img: './women-1.jpg',
-    },
-  ].map((dish, index) => (
-    <Card
-      key={index}
-      className='  sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
-    >
-      <CardHeader className='p-0'>
-        <div className="relative w-full h-50 overflow-hidden rounded-t-lg">
-          <img
-            src={dish.img}
-            alt={dish.name}
-            className='w-full h-full object-cover'
-          />
-        </div>
-      </CardHeader>
+     <div className='p-10 md:p-20 sm:p-10 mx-auto'>
+  <div className='flex flex-col md:flex-row items-center mx-10 md:mx-10 w-full mx-auto'>
+    <div className='flex flex-col md:w-full justify-center text-center md:text-left'>
+      <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Featured Products</h3>
+      <h1 className='text-center text-2xl md:text-4xl font-bold mt-5'>Best Seller Product</h1>
+      <p className='text-center'>Problems trying to resolve the conflict between</p>
+      
+      <Link to={'menu'}>
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-full mx-auto md:justify-start gap-10 mt-10 lg:px-0 px-8'>
+          {[
+            {
+              desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
+              price: 24,
+              rating: 4.2,
+              img: './men-sample.jpg',
+            },
+            {
+              desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
+              price: 27,
+              rating: 4.9,
+              img: './women.jpg',
+            },
+            {
+              desc: 'Elegant flow meets everyday ease. This maxi dress drapes beautifully and moves with you — perfect for brunch dates, beach walks, or just turning heads wherever you go.',
+              price: 17,
+              rating: 4.9,
+              img: './children-sample.jpg',
+            },
+            {
+              desc: 'Soft, breathable, and built for comfort — our premium cotton tee fits just right and feels even better. A wardrobe essential, now in your favorite everyday colors.',
+              price: 31,
+              rating: 4.5,
+              img: './women-1.jpg',
+            },
+          ].map((dish, index) => (
+            <div
+              key={index}
+              className='sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg rounded-lg'
+            >
+              <div className='p-0'>
+                <div className='relative w-full h-50 overflow-hidden rounded-t-lg'>
+                  <img
+                    src={dish.img}
+                    alt={dish.name}
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+              </div>
 
-      <CardContent className='flex-1 px-6 pt-4'>
-        <CardDescription className='text-sm md:text-base'>
-          {dish.desc}
-        </CardDescription>
-      </CardContent>
+              <div className='flex-1 px-6 pt-4'>
+                <p className='text-sm md:text-base'>{dish.desc}</p>
+              </div>
 
-      <CardFooter className='flex items-center justify-between w-full px-6 pb-4 pt-2 mt-auto'>
-        <div className='font-bold text-lg'>
-          <span className='text-red-600'>$</span> {dish.price.toFixed(2)}
+              <div className='flex items-center justify-between w-full px-6 pb-4 pt-2 mt-auto'>
+                <div className='font-bold text-lg'>
+                  <span className='text-red-600'>$</span> {dish.price.toFixed(2)}
+                </div>
+                <div className='flex items-center'>
+                  <span className='mr-1'>{dish.rating}</span>
+                  <img src='./star.png' alt='star' className='w-5 h-5' />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className='flex items-center'>
-          <span className='mr-1'>{dish.rating}</span>
-          <img src='./star.png' alt='star' className='w-5 h-5' />
-        </div>
-      </CardFooter>
-    </Card>
-  ))}
+      </Link>
+    </div>
+  </div>
 </div>
 
-            </Link>
-          </div>
-        </div>
-      </div>
+      {/* {Till} */}
 
 
 
