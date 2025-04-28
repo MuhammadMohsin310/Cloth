@@ -1,5 +1,7 @@
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 
+
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -9,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function SectionCards( { productCount }) {
+export function SectionCards( { productCount ,userCount ,orderCount  }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 lg:px-6 items-center">
     <Card className="@container/card h-full">
@@ -35,9 +37,9 @@ export function SectionCards( { productCount }) {
 
     <Card className="@container/card h-full">
       <CardHeader className="relative">
-        <CardDescription>Orders Pending</CardDescription>
+        <CardDescription>Total Orders</CardDescription>
         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-          234
+        {orderCount}
         </CardTitle>
         <div className="absolute right-4 top-4">
           <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">
@@ -58,7 +60,7 @@ export function SectionCards( { productCount }) {
       <CardHeader className="relative">
         <CardDescription>Active Accounts</CardDescription>
         <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-          45,678
+          {userCount}
         </CardTitle>
         <div className="absolute right-4 top-4">
           <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">

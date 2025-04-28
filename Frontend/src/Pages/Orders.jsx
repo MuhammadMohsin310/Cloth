@@ -17,9 +17,30 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+import { useEffect, useState } from 'react';
+import axiosInstance from '@/services/axiosInstance';
 
 
 function Users() {
+
+const [order , setOrders] = useState([]);
+
+useEffect(() => {
+  const fetchOrders = async () => {
+    try {
+      const response = await axiosInstance.get("/Checkout"); // Adjust the endpoint as needed
+      console.log(response.data);
+      setOrders(response.data); // Set the fetched orders to state
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+
+  fetchOrders(); // Call the fetch function
+}, [])
+
+const count = 0
+
   return (
     < >
 
@@ -38,28 +59,36 @@ function Users() {
         </div>
 
         <div className="px-6"> {/* This adds left/right padding */}
-  <Table className="bg-white rounded-md w-full">
-    <TableCaption className="py-2">List of All Products.</TableCaption>
-    <TableHeader>
-      <TableRow>
-        <TableHead className="w-[100px] px-4 py-2 text-red-600">Id</TableHead>
-        <TableHead className="px-4 py-2 text-red-600">Name</TableHead>
-        <TableHead className="px-4 py-2 text-red-600" text-red-600>Price</TableHead>
-        <TableHead className="px-4 py-2 text-red-600">Description</TableHead>
-        <TableHead className="px-4 py-2 text-red-600" text-red-600>Category</TableHead>
-
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      <TableRow>
-        <TableCell className="font-medium px-4 py-2">001</TableCell>
-        <TableCell className="px-4 py-2">Brown Jacket</TableCell>
-        <TableCell className="px-4 py-2">2$</TableCell>
-        <TableCell className="px-4 py-2">A stylish brown jacket offering timeless appeal and cozy comfort for any season.</TableCell>
-        <TableCell className="px-4 py-2">Men</TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
+        <Table className="bg-white rounded-md w-full">
+        <TableCaption className="py-2">List of All Orders</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px] px-4 py-2 text-red-600">S.no</TableHead>
+            <TableHead className="px-4 py-2 text-red-600">Customer Name</TableHead>
+            <TableHead className="px-4 py-2 text-red-600">Phone No.</TableHead>
+            <TableHead className="px-4 py-2 text-red-600">Orders</TableHead>
+            {/* <TableHead className="px-4 py-2 text-red-600">Category</TableHead> */}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {/* Map over the orders array and display each order */}
+          {order.length > 0 ? (
+            order.map((order , i) => (
+              <TableRow key={order._id}>
+                <TableCell className="font-medium px-4 py-2">{i + 1}</TableCell>
+                <TableCell className="px-4 py-2">{order.name}</TableCell>
+                <TableCell className="px-4 py-2">{order.phone}</TableCell>
+                <TableCell className="px-4 py-2">{order.description}</TableCell>
+                {/* <TableCell className="px-4 py-2">{order.category}</TableCell> */}
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan="5" className="text-center py-4">No orders found.</TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
 </div>
 
 

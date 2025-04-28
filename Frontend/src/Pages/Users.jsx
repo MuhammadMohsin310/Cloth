@@ -43,6 +43,22 @@ function Users() {
     fetchUsers();
   }, []);
 
+  //fecth users from backend on component mount
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axiosInstance.get("users"); // Adjust the endpoint as needed
+        console.log(response.data);
+        setUsers(response.data); // Set the fetched users to state
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    fetchUsers(); // Call the fetch function
+  }, []);
+
 
   return (
     < >
