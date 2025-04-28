@@ -70,7 +70,7 @@ const About = () => {
                   <p className="text-red-600 font-semibold lg:text-base text-xs mb-0">About company</p>
                 </div>
                 <div>
-                  {/* <h1 className="lg:text-5xl text-4xl font-bold">ABOUT US</h1> */}
+                  <h1 className="lg:text-5xl text-4xl font-bold">Driven by Passion, Inspired by Purpose</h1>
                 </div>
                 <div>
                   <p className="text-gray-600 lg:text-base text-sm font-light">
