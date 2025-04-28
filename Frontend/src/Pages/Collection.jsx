@@ -115,6 +115,9 @@ const Collection = () => {
                                         </button>
                                       </div>
                                     </div>
+                                    <div className="hidden">
+                                  
+                                    </div>
                                     <div className="lg:text-left  px-3 flex flex-col  lg:gap-7 gap-5  pb-3 ">
                                       <div>
                                         <div className="text-md font-semibold">{product.name}</div>
