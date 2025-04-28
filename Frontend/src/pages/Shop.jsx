@@ -136,7 +136,7 @@ const Shop = () => {
         {/* Brands */}
         {/* Products */}
         <div className="max-w-7xl mx-auto  h-auto py-10">
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1  mx-10 gap-4 mt-10 ">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  mx-10 gap-4 mt-10 ">
             {products?.map((product) => (
               <Card
                 key={product._id}
@@ -162,7 +162,7 @@ const Shop = () => {
                 <div className="lg:text-left  px-3 flex flex-col  lg:gap-7 gap-5  pb-3 ">
                   <div>
                     <div className="text-md font-semibold">{product.name}</div>
-                    <div className="line-clamp-2 text-sm text-gray-500 overflow-hidden text-ellipsis">
+                    <div className="lg:line-clamp-2 line-clamp-1 lg:text-sm text-xs text-gray-500  overflow-hidden text-ellipsis">
                       {product.desc}
                     </div>
                   </div>
@@ -172,21 +172,21 @@ const Shop = () => {
                       <span className="line-through decoration-red-500 text-red-800 text-xs">
                       ${product.price}
                       </span>{" "}
-                      <span className="font-bold text-lg ">
+                      <span className="font-bold lg:text-lg text-xs ">
                       ${product.actualprice}
                         
                       </span>
                     </div>
                     <div>
                       <Button
-                        className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg md:rounded-lg "
+                        className=" text-white bg-black lg:text-normal text-xs hover:bg-gray-700 rounded-lg md:rounded-lg  "
                         // onClick={() => handleAddToCart(product)}
                         onClick={() => {
                           console.log("Trying to add", product._id);
                           dispatch(addToCart(product));
                         }}
                       >
-                        <FaCartArrowDown />
+                        <FaCartArrowDown  />
                         <span className="ml-2 hidden sm:inline">Add To Cart</span>
                       </Button>
                     </div>

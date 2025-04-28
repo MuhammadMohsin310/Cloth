@@ -64,13 +64,13 @@ const About = () => {
 
           {/* Hero section Container */}
           <div >
-            <div className="flex justify-between my-20 lg:gap-5 gap-34 px-7 lg:flex-row flex-col lg:text-left text-center     items-center mx-auto max-w-7xl">
-              <div className="flex flex-col gap-10 lg:max-w-92 max-w-52">
+            <div className="flex justify-between my-20 lg:gap-5 lg:gap-34 gap-0  px-7 lg:flex-row flex-col lg:text-left text-center     items-center mx-auto max-w-7xl">
+              <div className="flex flex-col gap-10 lg:max-w-92 ">
                 <div>
                   <p className="text-red-600 font-semibold lg:text-base text-xs mb-0">About company</p>
                 </div>
                 <div>
-                  {/* <h1 className="lg:text-5xl text-4xl font-bold">ABOUT US</h1> */}
+                  <h1 className="lg:text-5xl text-4xl font-bold">Driven by Passion, Inspired by Purpose</h1>
                 </div>
                 <div>
                   <p className="text-gray-600 lg:text-base text-sm font-light">

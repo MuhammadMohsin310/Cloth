@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "@/validations/formSchema";
 import { toast } from "react-toastify";
 import { openLoginDialog } from "@/features/dialog/dialogSlice";
+import { useNavigate } from "react-router-dom";
 
 import {
   addToCart,
@@ -22,6 +23,7 @@ import {
 import { MdShoppingCartCheckout } from "react-icons/md";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const CartItems = useSelector((state) => state.cart.cartItems);
 
@@ -44,7 +46,7 @@ const Checkout = () => {
       console.log("Contact Done:",data);
       toast.success(" Order placedsuccessfully!");
       reset()
-     
+     navigate("/")
     } catch (error) {
       
      dispatch(openLoginDialog())

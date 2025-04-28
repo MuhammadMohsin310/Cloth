@@ -63,14 +63,14 @@ function Home() {
 
 
      {/*Dishes Section */}
-     <div className='bg-white p-10 md:p-20 sm:p-10 '>
-        <div className=' flex flex-col md:flex-row items-center mx-5 md:mx-10'>
-          <div className='w-full md:w-full justify-center text-center md:text-left'>
+     <div className=' p-10 md:p-20 sm:p-10 w-full mx-auto'>
+        <div className=' flex flex-col md:flex-row items-center mx-5 md:mx-10 w-full mx-auto'> 
+          <div className='max-w-7xl mx-auto flex flex-col md:w-full justify-center text-center md:text-left'>
             <h3 className='text-center text-red-500 font-bold mt-6 text-lg md:text-xl'>Featured Products</h3>
             <h1 className='text-center text-2xl md:text-4xl font-bold mt-5'>Best Seller Product</h1>
             <p  className='text-center'>Problems trying to resolve the conflict between </p>
             <Link to={'menu'}>
-            <div className='flex flex-wrap justify-center md:justify-start gap-4 mt-10'>
+            <div className='grid grid-cols-4 max-w-7xl mx-auto j md:justify-start gap-4 mt-10'>
   {[
     {
       desc: 'Timeless, versatile, and effortlessly cool — this denim jacket is your go-to layer for every season. Dress it up or keep it casual, its a staple that never goes out of style.',
@@ -99,7 +99,7 @@ function Home() {
   ].map((dish, index) => (
     <Card
       key={index}
-      className='w-full  sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
+      className='  sm:w-80 flex flex-col justify-between mx-auto bg-white shadow-lg'
     >
       <CardHeader className='p-0'>
         <div className="relative w-full h-50 overflow-hidden rounded-t-lg">
@@ -175,9 +175,10 @@ function Home() {
       We know how large objects will act, but things on a small scale.
     </p>
     <div className="flex justify-center md:justify-start space-x-4 pt-6">
-      <button className="bg-black text-white px-5 py-2 rounded-md text-sm hover:cursor-pointer">
+    <Link to="/shop"> <button className="bg-black text-white px-5 py-2 rounded-md text-sm hover:cursor-pointer">
         Buy Now
       </button>
+      </Link> 
       <button className="border border-slate-300 text-black hover:bg-green-100  px-5 py-2 rounded-md text-sm">
         Read More
       </button>

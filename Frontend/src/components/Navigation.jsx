@@ -72,18 +72,110 @@ const Navbar = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-          <h1 className="text-black lg:text-3xl md:text-3xl text-lg font-bold ">Store Name</h1>
-
+            <h1 className="text-black lg:text-3xl md:text-3xl text-lg font-bold ">
+              Store Name
+            </h1>
           </Link>
 
           {/* Mobile Menu Button (Hamburger Icon) */}
+          <div className="flex justify-center items-center lg:hidden gap-3">
+          <li className="list-none">
+              <Sheet className="bg-white">
+                <SheetTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className=" flex items-center  border-1"
+                  >
+                    <FaShoppingCart /> {/* Cart icon */}
+                  
+                  </Button>
+                </SheetTrigger>
+
+                <SheetContent className="bg-white transition-transform duration-300 ease-in-out transform">
+                  <SheetHeader>
+                    <SheetTitle>Add To Cart</SheetTitle>
+                    <SheetDescription>
+                      Make changes to your profile here. Click save when you're
+                      done.
+                    </SheetDescription>
+                  </SheetHeader>
+
+                  {/* Cart items container */}
+                  <div className="flex flex-col gap-1 ">
+                    {CartItems.map((item, index) => (
+                      <Card
+                        key={index}
+                        className="w-full h-20 flex items-center justify-between px-4 rounded-md bg-gray-100"
+                      >
+                        {/* Left Side: Product Info */}
+                        <div className="flex items-center gap-2 justify-center">
+                          <div className="bg-gray-800 h-7 w-7"></div>
+                          <div>
+                            <h1 className="text-sm font-semibold">
+                              {item.name}
+                            </h1>
+                            <span className="text-xs text-gray-500">
+                              Quantity : {item.quantity}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Right Side: Controls */}
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={() => {
+                              dispatch(addToCart(item));
+                            }}
+                            className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600"
+                          >
+                            +
+                          </button>
+                          <button
+                            onClick={() => {
+                              console.log("Trying to add", item._id);
+                              dispatch(removeFromCart(item));
+                            }}
+                            className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600"
+                          >
+                            -
+                          </button>
+                          <div
+                            onClick={() => {
+                              dispatch(deleteFromCart(item));
+                            }}
+                            className="hover:text-red-600 cursor-pointer text-lg"
+                          >
+                            <MdDelete />
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                  {/* Optional HR divider */}
+
+                  <SheetFooter>
+                    <SheetClose asChild>
+                      <a href="/Checkout">
+                        {" "}
+                        <Button
+                          className="bg-black text-white w-full"
+                          type="submit"
+                        >
+                          <MdShoppingCartCheckout /> Check Out
+                        </Button>
+                      </a>
+                    </SheetClose>
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
+            </li>
           <button
             className="lg:hidden text-gray-700 p-2 rounded-md focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-
+          </div>
           {/* Navbar Links - Desktop */}
           <div className="hidden lg:flex lg:w-auto lg:order-1">
             <ul className="flex space-x-8 font-medium">
@@ -179,10 +271,10 @@ const Navbar = () => {
                                 +
                               </button>
                               <button
-                                 onClick={() => {
-                                                         console.log("Trying to add", item._id);
-                                                         dispatch(removeFromCart(item));
-                                                       }}
+                                onClick={() => {
+                                  console.log("Trying to add", item._id);
+                                  dispatch(removeFromCart(item));
+                                }}
                                 className="px-2 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600"
                               >
                                 -
@@ -286,54 +378,52 @@ const Navbar = () => {
               </>
             )}
           </div>
+          
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-           
-
-          <div className="lg:hidden bg-white shadow-md mt-2 rounded-md absolute w-full left-0">
-           
-           
-
-            <ul className="flex flex-col text-center py-2">
-              <li className="py-2 border-b">
-                <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
-                  Home
-                </NavLink>
-              </li>
-              
-              <li className="py-2 border-b">
-                <NavLink to="/shop" onClick={() => setIsMenuOpen(false)}>
-                  Shop
-                </NavLink>
-              </li>
-              <li className="py-2 border-b">
-                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
-                  About
-                </NavLink>
-              </li>
-              <li className="py-2 border-b">
-                <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>
-                  Contact
-                </NavLink>
-              </li>
-
-              {/* Mobile Auth Buttons */}
-              {isAuthenticated ? (
-                <li className="py-2">
-                  <button
-                    onClick={handleLogout}
-                    className="bg-red-500 text-white rounded-md hover:bg-red-600 text-sm px-4 py-2"
-                  >
-                    Logout
-                  </button>
+          <>
+            <div className="lg:hidden bg-white shadow-md mt-2 rounded-md absolute w-full left-0">
+              <ul className="flex flex-col text-center py-2">
+                <li className="py-2 border-b">
+                  <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+                    Home
+                  </NavLink>
                 </li>
-              ) : (
-                <></>
-              )}
-            </ul>
-          </div>
+
+                <li className="py-2 border-b">
+                  <NavLink to="/shop" onClick={() => setIsMenuOpen(false)}>
+                    Shop
+                  </NavLink>
+                </li>
+                <li className="py-2 border-b">
+                  <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
+                    About
+                  </NavLink>
+                </li>
+                <li className="py-2 border-b">
+                  <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>
+                    Contact
+                  </NavLink>
+                </li>
+
+                {/* Mobile Auth Buttons */}
+                {isAuthenticated ? (
+                  <li className="py-2">
+                    <button
+                      onClick={handleLogout}
+                      className="bg-red-500 text-white rounded-md hover:bg-red-600 text-sm px-4 py-2"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                ) : (
+                  <></>
+                )}
+              </ul>
+            </div>
+          </>
         )}
       </nav>
     </header>
