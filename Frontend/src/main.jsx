@@ -5,7 +5,7 @@ import "./index.css";
 import { createRoutesFromElements, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./pages/about";
+
 import { Provider } from "react-redux";
 
 import Contact from "./pages/contact";
@@ -21,7 +21,7 @@ import { store } from "./redux/store";
 import Checkout from "./pages/checkout";
 import Collection from "./pages/collection";
 import Home from "./pages/home";
-
+import About from "./pages/about";
 // Define router
 const router = createBrowserRouter(
   createRoutesFromElements(
