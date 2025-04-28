@@ -10,17 +10,17 @@ import { Provider } from "react-redux";
 
 import Contact from "./pages/Contact";
 import LayoutSidebar from "./components/LayoutSidebar";
-import Dashboard from "./Pages/Dashboard";
-import Users from "./Pages/Users";
-import Products from "./Pages/Products";
-import Orders from "./Pages/Orders";
-import Shop from './Pages/Shop'
-import ProductDesc from './Pages/ProductDesc'
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Products from "./pages/Products";
+import Orders from "./pages/Orders";
+import Shop from './pages/Shop'
+import ProductDesc from './pages/ProductDesc'
 
 import { store } from "./redux/store";
-import Checkout from "./Pages/Checkout";
-import Collection from "./Pages/Collection";
-import Home from "./Pages/Home";
+import Checkout from "./pages/Checkout";
+import Collection from "./pages/Collection";
+import Home from "./pages/Home";
 
 // Define router
 const router = createBrowserRouter(
