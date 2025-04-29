@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import LayoutSidebar from "./components/LayoutSidebar";
-import Dashboard from "./Pages/Dashboard";
+import Dashboard  from "./Pages/Dashboard";
 import Users from "./Pages/Users";
 import Products from "./Pages/Products";
 import Orders from "./Pages/Orders";
