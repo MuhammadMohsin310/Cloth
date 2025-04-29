@@ -5,10 +5,9 @@ import "./index.css";
 import { createRoutesFromElements, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./pages/About";
+
 import { Provider } from "react-redux";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+
 import LayoutSidebar from "./components/LayoutSidebar";
 import Dashboard  from "./Pages/Dashboard";
 import Users from "./Pages/Users";
@@ -18,9 +17,11 @@ import Shop from './Pages/Shop'
 import ProductDesc from './Pages/ProductDesc'
 
 import { store } from "./redux/store";
-import Checkout from "./Pages/Checkout";
-import Collection from "./Pages/Collection";
-
+import Checkout from "./pages/checkout";
+import Collection from "./pages/collection";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/contact";
 // Define router
 const router = createBrowserRouter(
   createRoutesFromElements(
