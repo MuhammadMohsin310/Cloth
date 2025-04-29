@@ -9,12 +9,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import LayoutSidebar from "./components/LayoutSidebar";
-import Dashboard  from "./pages/Dashboard";
+import Dashboard  from "./pages/dashboard";
 import Users from "./pages/Users";
-import Products from "./pages/Products";
-import Orders from "./pages/Orders";
-import Shop from './pages/Shop'
-import ProductDesc from './pages/ProductDesc'
+import Products from "./pages/products";
+import Orders from "./pages/orders";
+import Shop from './pages/shop'
+import ProductDesc from './pages/productDesc'
 
 import { store } from "./redux/store";
 import Checkout from "./pages/checkout";
