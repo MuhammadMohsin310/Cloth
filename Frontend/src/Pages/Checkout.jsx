@@ -14,6 +14,7 @@ import { checkoutSchema } from "@/validations/formSchema";
 import { toast } from "react-toastify";
 import { openLoginDialog } from "@/features/dialog/dialogSlice";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "@/features/cart/cartSlice";
 
 import {
   addToCart,
@@ -47,6 +48,7 @@ const Checkout = () => {
       toast.success(" Order placedsuccessfully!");
       reset()
      navigate("/")
+     dispatch(clearCart())
     } catch (error) {
       
      dispatch(openLoginDialog())

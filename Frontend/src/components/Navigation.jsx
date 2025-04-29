@@ -79,7 +79,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button (Hamburger Icon) */}
           <div className="flex justify-center items-center lg:hidden gap-3">
-          <li className="list-none">
+            <li className="list-none">
               <Sheet className="bg-white">
                 <SheetTrigger asChild>
                   <Button
@@ -87,7 +87,6 @@ const Navbar = () => {
                     className=" flex items-center  border-1"
                   >
                     <FaShoppingCart /> {/* Cart icon */}
-                  
                   </Button>
                 </SheetTrigger>
 
@@ -169,12 +168,12 @@ const Navbar = () => {
                 </SheetContent>
               </Sheet>
             </li>
-          <button
-            className="lg:hidden text-gray-700 p-2 rounded-md focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+            <button
+              className="lg:hidden text-gray-700 p-2 rounded-md focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
           {/* Navbar Links - Desktop */}
           <div className="hidden lg:flex lg:w-auto lg:order-1">
@@ -378,7 +377,6 @@ const Navbar = () => {
               </>
             )}
           </div>
-          
         </div>
 
         {/* Mobile Menu */}
