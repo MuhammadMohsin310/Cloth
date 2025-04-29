@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "@/features/cart/cartSlice";
+import { addToCart,  } from "@/features/cart/cartSlice";
 import {
   Pagination,
   PaginationContent,
@@ -15,7 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import axiosInstance from "../services/axiosInstance";
-import { toast } from "react-toastify";
+
 import { Button } from "@/components/ui/button";
 const Collection = () => {
   const dispatch = useDispatch();

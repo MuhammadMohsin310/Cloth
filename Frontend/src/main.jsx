@@ -13,7 +13,7 @@ import Dashboard  from "./Pages/Dashboard";
 import Users from "./Pages/Users";
 import Products from "./Pages/Products";
 import Orders from "./Pages/Orders";
-import Shop from './Pages/Shop'
+import Shop from './pages/Shop'
 import ProductDesc from './Pages/ProductDesc'
 
 import { store } from "./redux/store";

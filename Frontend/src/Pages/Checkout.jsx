@@ -32,7 +32,7 @@ const Checkout = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors,  },
   } = useForm({
     resolver:zodResolver(checkoutSchema)
   });

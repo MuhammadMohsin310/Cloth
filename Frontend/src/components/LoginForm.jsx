@@ -14,8 +14,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "../services/axiosInstance";
 import { loginSchema } from "../validations/formSchema";
 import { toast } from "react-toastify";
-import { useDispatch,useSelector } from "react-redux";
-import { openLoginDialog,closeLoginDialog,openSignUpDialog } from "@/features/dialog/dialogSlice";
+import { useDispatch, } from "react-redux";
+import { closeLoginDialog,openSignUpDialog } from "@/features/dialog/dialogSlice";
 
 
 
@@ -26,7 +26,7 @@ export function LoginForm() {
        register,
        handleSubmit,
        reset,
-       formState: { errors, isSubmitting },
+       formState: { errors,  },
      } = useForm({
        resolver:zodResolver(loginSchema)
      });
